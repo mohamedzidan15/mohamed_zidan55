@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZIDAN</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #050510;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    /* خلفية */
+    canvas {
+      position: fixed;
+      inset: 0;
+      width: 100%; height: 100%;
+      z-index: -1;
+    }
+
+    /* شريط علوي */
+    nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 15px 30px;
+      background: rgba(0,0,0,0.7);
+      backdrop-filter: blur(15px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    nav h1 {
+      font-size: 28px;
+      font-weight: bold;
+      color: #00f7ff;
+      text-shadow: 0 0 15px #00f7ff, 0 0 35px #7f00ff;
+      animation: glow 3s infinite alternate;
+    }
+    .nav-right {
+      position: absolute;
+      right: 20px;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+    nav input, nav select {
+      padding: 8px 15px;
+      border-radius: 20px;
+      border: none;
+      outline: none;
+      font-size: 14px;
+    }
+    nav select {
+      cursor: pointer;
+      background: linear-gradient(135deg, #7f00ff, #00f7ff);
+      color: #fff;
+      font-weight: bold;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 15px #7f00ff; }
+      to { text-shadow: 0 0 30px #00f7ff; }
+    }
+
+    /* الأقسام */
+    section {
+      padding: 30px;
+    }
+    section h2 {
+      font-size: 22px;
+      margin-bottom: 20px;
+      color: #00f7ff;
+    }
+
+    /* الشبكة */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 20px;
+    }
+
+    /* الكارت */
+    .card {
+      position: relative;
+      border-radius: 15px;
+      overflow: hidden;
+      cursor: pointer;
+      box-shadow: 0 0 25px rgba(127,0,255,0.5);
+      transition: transform 0.3s, box-shadow 0.3s;
+      background-size: cover;
+      background-position: center;
+      height: 270px;
+      display: flex;
+      align-items: flex-end;
+    }
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 40px rgba(0,247,255,0.8);
+    }
+    .card h3 {
+      width: 100%;
+      padding: 10px;
+      margin: 0;
+      font-size: 15px;
+      text-align: center;
+      background: linear-gradient(180deg, transparent, rgba(0,0,0,0.8));
+    }
+
+    /* مودال */
+    #modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.95);
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      z-index: 1000;
+    }
+    #modal video {
+      width: 90%;
+      max-width: 950px;
+      border-radius: 15px;
+      box-shadow: 0 0 50px rgba(127,0,255,0.9);
+    }
+    #closeBtn {
+      margin-top: 20px;
+      background: linear-gradient(135deg, #7f00ff, #00f7ff);
+      border: none;
+      padding: 12px 25px;
+      border-radius: 10px;
+      color: white;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- شريط -->
+  <nav>
+    <h1>ZIDAN</h1>
+    <div class="nav-right">
+      <input type="text" id="search" placeholder="🔎 ابحث...">
+      <select id="filter">
+        <option value="all">عرض الكل</option>
+        <option value="movies">الأفلام فقط</option>
+        <option value="series">المسلسلات فقط</option>
+      </select>
+    </div>
+  </nav>
+
+  <!-- قسم الأفلام -->
+  <section id="moviesSection">
+    <h2>🎬 الأفلام</h2>
+    <div class="grid" id="movies"></div>
+  </section>
+
+  <!-- قسم المسلسلات -->
+  <section id="seriesSection">
+    <h2>📺 المسلسلات</h2>
+    <div class="grid" id="series"></div>
+  </section>
+
+  <!-- مودال الفيديو -->
+  <div id="modal">
+    <video controls autoplay id="player"></video>
+    <button id="closeBtn">❌ إغلاق</button>
+  </div>
+
+  <!-- خلفية -->
+  <canvas id="bg"></canvas>
+
+  <script>
+    // =============================
+    // 🎬 الأفلام (أول 10)
+    // =============================
+    const movies = [
+      { title: "التجربة الدنماركية", poster: "4.jpeg", link: "https://ddy35sps10.dls4all.online/d/oiqkiznqfsrnuwfu6z6il7hrxdr5diyw5ty3e7r7pwnasr7od4eublojeamcx7vpatqftear/video.mp4" },
+      { title: "الحرب العالمية التالته", poster: "5.jpeg", link: "https://fhd20a14.dls4all.online/d/2uqdsrnrfsrnuwfu456jbz7mvj72rxsm2n5bey5lyyqlhumdax5jduysgromgnx2evy5igtw/video.mp4" },
+      { title: "سمير ابو النيل", poster: "6.jpeg", link: "https://ddy35s63.dls4all.online/d/i4qjsc5rfsrnuwfu5n6ivoxrw5velbotohirc2tewcrco42wp6umkmxg7p4dftgqubixva6s/video.mp4" },
+      { title: "امير البحار", poster: "8.jpeg", link: "https://ddy35s64.dls4all.online/d/iyqekpnqfsrnuwfu7n6ibmxx637i7rudjpoyfwjilsipbzb4x4p6irfftzrjnohjbhbv36f3/video.mp4" },
+      { title: "فول الصين العظيم", poster: "9.jpeg", link: "https://nt47no-12.times20qu20.shop/6jmnrvpozuazsalrixqalzxnjpjaqzq7thv5nhc22mf76uz3gkft6ozk34na/v.mp4" },
+      { title: "صعيدي في الجامعه الامريكيه", poster: "10.jpeg", link: "https://ddyops01h.dls4all.online/d/2aqddlnsfsrnuwfu556i7o7kx2gpqmspueq6z3e6uuasfrycyyn72hbwefnvpdq4bjiy7we7/video.mp4" },
+      { title: "dddd", poster: "10.jpeg", link: "https://vkvideo.ru/video787385537_456252548?ref_domain=" },
+
+      { title: "فيلم 10", poster: "poster10.jpg", link: "movie10.mp4" }
+    ];
+
+    // =============================
+    // 📺 المسلسلات (أول 10)
+    // =============================
+    const series = [
+      { title: "مسلسل 1", poster: "1.jpeg", episodes: ["s1e1.mp4", "s1e2.mp4", "s1e3.mp4"] },
+      { title: "مسلسل 2", poster: "series2.jpg", episodes: ["s2e1.mp4", "s2e2.mp4"] },
+      { title: "مسلسل 3", poster: "series3.jpg", episodes: ["s3e1.mp4", "s3e2.mp4"] },
+      { title: "مسلسل 4", poster: "series4.jpg", episodes: ["s4e1.mp4"] },
+      { title: "مسلسل 5", poster: "series5.jpg", episodes: ["s5e1.mp4", "s5e2.mp4", "s5e3.mp4"] },
+      { title: "مسلسل 6", poster: "series6.jpg", episodes: ["s6e1.mp4"] },
+      { title: "مسلسل 7", poster: "series7.jpg", episodes: ["s7e1.mp4", "s7e2.mp4"] },
+      { title: "مسلسل 8", poster: "series8.jpg", episodes: ["s8e1.mp4", "s8e2.mp4", "s8e3.mp4"] },
+      { title: "مسلسل 9", poster: "series9.jpg", episodes: ["s9e1.mp4", "s9e2.mp4"] },
+      { title: "مسلسل 10", poster: "series10.jpg", episodes: ["s10e1.mp4"] }
+    ];
+
+    const moviesContainer = document.getElementById("movies");
+    const seriesContainer = document.getElementById("series");
+    const modal = document.getElementById("modal");
+    const player = document.getElementById("player");
+    const closeBtn = document.getElementById("closeBtn");
+
+    function render(list, container) {
+      container.innerHTML = "";
+      list.forEach(item => {
+        const card = document.createElement("div");
+        card.className = "card";
+        card.style.backgroundImage = `url(${item.poster})`;
+        card.innerHTML = `<h3>${item.title}</h3>`;
+
+        if (item.episodes) {
+          card.onclick = () => {
+            let ep = prompt("اختر رقم الحلقة (1-" + item.episodes.length + ")");
+            if(ep && item.episodes[ep-1]) play(item.episodes[ep-1]);
+          }
+        } else {
+          card.onclick = () => play(item.link);
+        }
+
+        container.appendChild(card);
+      });
+    }
+
+    render(movies, moviesContainer);
+    render(series, seriesContainer);
+
+    function play(link) {
+      player.src = link;
+      modal.style.display = "flex";
+    }
+    closeBtn.onclick = () => {
+      modal.style.display = "none";
+      player.pause();
+    };
+
+    // البحث والفلترة
+    const search = document.getElementById("search");
+    const filter = document.getElementById("filter");
+
+    function updateView() {
+      const term = search.value.toLowerCase();
+      const show = filter.value;
+
+      const filteredMovies = movies.filter(item => item.title.toLowerCase().includes(term));
+      const filteredSeries = series.filter(item => item.title.toLowerCase().includes(term));
+
+      if (show === "movies") {
+        document.getElementById("moviesSection").style.display = "block";
+        document.getElementById("seriesSection").style.display = "none";
+        render(filteredMovies, moviesContainer);
+      } else if (show === "series") {
+        document.getElementById("moviesSection").style.display = "none";
+        document.getElementById("seriesSection").style.display = "block";
+        render(filteredSeries, seriesContainer);
+      } else {
+        document.getElementById("moviesSection").style.display = "block";
+        document.getElementById("seriesSection").style.display = "block";
+        render(filteredMovies, moviesContainer);
+        render(filteredSeries, seriesContainer);
+      }
+    }
+
+    search.addEventListener("input", updateView);
+    filter.addEventListener("change", updateView);
+
+    // خلفية نجوم
+    const canvas = document.getElementById("bg");
+    const ctx = canvas.getContext("2d");
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    let stars = [];
+    for (let i = 0; i < 150; i++) {
+      stars.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: Math.random() * 1.5 + 0.5,
+        dx: (Math.random() - 0.5) * 0.3,
+        dy: (Math.random() - 0.5) * 0.3
+      });
+    }
+
+    function animateStars() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      stars.forEach(s => {
+        ctx.beginPath();
+        ctx.fillStyle = "#fff";
+        ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+        ctx.fill();
+        s.x += s.dx;
+        s.y += s.dy;
+        if (s.x < 0 || s.x > canvas.width) s.dx *= -1;
+        if (s.y < 0 || s.y > canvas.height) s.dy *= -1;
+      });
+      requestAnimationFrame(animateStars);
+    }
+    animateStars();
+
+    window.onresize = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    };
+  </script>
+</body>
+</html>
