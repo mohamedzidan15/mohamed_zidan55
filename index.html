@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zidan AI - الذكاء الاصطناعي المتكامل</title>
+    <title>Zidan AI - الذكاء الاصطناعي المتطور</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -11,12 +11,14 @@
             --primary-dark: #0d8a6d;
             --secondary: #5436da;
             --accent: #ff6b6b;
+            --warning: #f39c12;
+            --success: #2ecc71;
             --dark: #1a1a2e;
             --darker: #0f0f1a;
             --light: #f5f5f7;
             --gray: #8e8ea0;
             --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
-            --glow: 0 0 20px rgba(16, 163, 127, 0.3);
+            --glow: 0 0 30px rgba(16, 163, 127, 0.4);
         }
         
         * {
@@ -32,12 +34,13 @@
             min-height: 100vh;
             overflow-x: hidden;
             background-image: 
-                radial-gradient(circle at 10% 20%, rgba(16, 163, 127, 0.1) 0%, transparent 20%),
-                radial-gradient(circle at 90% 80%, rgba(84, 54, 218, 0.1) 0%, transparent 20%);
+                radial-gradient(circle at 10% 20%, rgba(16, 163, 127, 0.15) 0%, transparent 25%),
+                radial-gradient(circle at 90% 80%, rgba(84, 54, 218, 0.15) 0%, transparent 25%),
+                radial-gradient(circle at 50% 50%, rgba(255, 107, 107, 0.1) 0%, transparent 30%);
         }
         
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 0 20px;
             height: 100vh;
@@ -49,9 +52,9 @@
             padding: 15px 0;
             position: relative;
             z-index: 10;
-            background: rgba(26, 26, 46, 0.8);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            background: rgba(26, 26, 46, 0.9);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         }
         
         .header-content {
@@ -67,107 +70,76 @@
         }
         
         .logo-icon {
-            width: 45px;
-            height: 45px;
+            width: 50px;
+            height: 50px;
             background: var(--gradient);
-            border-radius: 10px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 20px;
+            font-size: 22px;
             font-weight: bold;
             box-shadow: var(--glow);
+            animation: pulse 2s infinite;
         }
         
         .logo-text {
-            font-size: 24px;
+            font-size: 26px;
             font-weight: 800;
             background: var(--gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 10px rgba(16, 163, 127, 0.3);
+            text-shadow: 0 0 15px rgba(16, 163, 127, 0.4);
         }
         
-        nav ul {
+        .ai-capabilities {
             display: flex;
-            list-style: none;
-            gap: 25px;
+            gap: 15px;
+            flex-wrap: wrap;
         }
         
-        nav a {
-            color: var(--light);
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s;
-            position: relative;
-            padding: 8px 0;
-            font-size: 15px;
-        }
-        
-        nav a:hover {
-            color: var(--primary);
-        }
-        
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            width: 0;
-            height: 2px;
-            background: var(--gradient);
-            transition: width 0.3s;
-        }
-        
-        nav a:hover::after {
-            width: 100%;
-        }
-        
-        .ai-status {
+        .capability {
+            background: rgba(16, 163, 127, 0.1);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 14px;
             display: flex;
             align-items: center;
             gap: 8px;
-            background: rgba(16, 163, 127, 0.1);
-            padding: 6px 15px;
-            border-radius: 50px;
             border: 1px solid rgba(16, 163, 127, 0.3);
-            font-size: 14px;
         }
         
-        .status-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: #10d67a;
-            animation: pulse 2s infinite;
+        .capability i {
+            color: var(--primary);
         }
         
         .chat-container {
             display: flex;
             flex: 1;
-            gap: 20px;
-            padding: 20px 0;
+            gap: 25px;
+            padding: 25px 0;
             height: calc(100vh - 80px);
         }
         
         .sidebar {
-            width: 280px;
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(15px);
-            border-radius: 15px;
-            padding: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            width: 320px;
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
             display: flex;
             flex-direction: column;
             overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
         
         .new-chat-btn {
             background: var(--gradient);
             color: white;
             border: none;
-            padding: 12px;
-            border-radius: 10px;
+            padding: 15px;
+            border-radius: 12px;
             font-size: 16px;
             font-weight: 600;
             cursor: pointer;
@@ -175,107 +147,193 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
-            margin-bottom: 20px;
+            gap: 10px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 15px rgba(16, 163, 127, 0.3);
         }
         
         .new-chat-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(16, 163, 127, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(16, 163, 127, 0.4);
+        }
+        
+        .ai-features {
+            margin-bottom: 25px;
+        }
+        
+        .features-title {
+            font-size: 16px;
+            color: var(--gray);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+        }
+        
+        .feature {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 12px;
+            border-radius: 10px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .feature:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(5px);
+        }
+        
+        .feature i {
+            color: var(--primary);
+            font-size: 16px;
         }
         
         .chat-history {
             flex: 1;
             overflow-y: auto;
-            padding-right: 10px;
         }
         
-        .chat-history-title {
-            font-size: 14px;
+        .history-title {
+            font-size: 16px;
             color: var(--gray);
             margin-bottom: 15px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
         
-        .chat-item {
+        .history-item {
             padding: 12px;
-            border-radius: 8px;
+            border-radius: 10px;
             margin-bottom: 8px;
             cursor: pointer;
             transition: all 0.3s;
             font-size: 14px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             color: var(--gray);
+            border-left: 3px solid transparent;
         }
         
-        .chat-item:hover {
+        .history-item:hover {
             background: rgba(255, 255, 255, 0.05);
             color: var(--light);
+            border-left-color: var(--primary);
         }
         
-        .chat-item.active {
+        .history-item.active {
             background: rgba(16, 163, 127, 0.1);
             color: var(--light);
+            border-left-color: var(--primary);
         }
         
-        .chat-item i {
+        .history-item i {
             font-size: 16px;
+            width: 20px;
         }
         
         .main-chat {
             flex: 1;
             display: flex;
             flex-direction: column;
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(15px);
-            border-radius: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
             overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            position: relative;
         }
         
         .chat-header {
-            padding: 20px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 20px 25px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
             display: flex;
             align-items: center;
             gap: 15px;
+            background: rgba(26, 26, 46, 0.7);
         }
         
         .chat-avatar {
-            width: 40px;
-            height: 40px;
+            width: 45px;
+            height: 45px;
             background: var(--gradient);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 18px;
+            font-size: 20px;
+            box-shadow: var(--glow);
+        }
+        
+        .chat-info {
+            flex: 1;
         }
         
         .chat-title {
             font-size: 18px;
             font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .chat-subtitle {
+            font-size: 14px;
+            color: var(--gray);
+        }
+        
+        .chat-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .action-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--light);
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 16px;
+        }
+        
+        .action-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.1);
         }
         
         .chat-messages {
             flex: 1;
-            padding: 20px;
+            padding: 25px;
             overflow-y: auto;
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 25px;
         }
         
         .message {
-            max-width: 85%;
-            padding: 15px 20px;
-            border-radius: 18px;
-            line-height: 1.5;
+            max-width: 80%;
+            padding: 20px;
+            border-radius: 20px;
+            line-height: 1.6;
             position: relative;
-            animation: fadeIn 0.3s ease-out;
+            animation: fadeIn 0.4s ease-out;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
         
         .user-message {
@@ -287,7 +345,7 @@
         
         .ai-message {
             align-self: flex-start;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.08);
             border-bottom-left-radius: 5px;
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
@@ -295,34 +353,89 @@
         .message-content {
             white-space: pre-wrap;
             word-wrap: break-word;
+            font-size: 16px;
         }
         
-        .message-time {
-            font-size: 11px;
+        .message-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+            font-size: 12px;
             opacity: 0.7;
-            margin-top: 5px;
-            text-align: right;
         }
         
-        .ai-message .message-time {
-            text-align: left;
+        .message-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .msg-action {
+            background: none;
+            border: none;
+            color: inherit;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+            font-size: 14px;
+        }
+        
+        .msg-action:hover {
+            opacity: 1;
+        }
+        
+        .thinking-indicator {
+            display: none;
+            padding: 20px;
+            align-items: center;
+            gap: 15px;
+            color: var(--gray);
+            font-size: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            margin: 0 25px;
+            border-radius: 15px;
+            align-self: flex-start;
+            max-width: 200px;
+        }
+        
+        .thinking-dots {
+            display: flex;
+            gap: 5px;
+        }
+        
+        .thinking-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--primary);
+            animation: bounce 1.4s infinite ease-in-out;
+        }
+        
+        .thinking-dot:nth-child(1) {
+            animation-delay: -0.32s;
+        }
+        
+        .thinking-dot:nth-child(2) {
+            animation-delay: -0.16s;
         }
         
         .chat-input-container {
-            padding: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(26, 26, 46, 0.7);
         }
         
-        .chat-input-wrapper {
+        .input-wrapper {
             display: flex;
             background: rgba(0, 0, 0, 0.3);
-            border-radius: 12px;
+            border-radius: 15px;
             border: 1px solid rgba(255, 255, 255, 0.1);
             transition: all 0.3s;
             position: relative;
+            overflow: hidden;
         }
         
-        .chat-input-wrapper:focus-within {
+        .input-wrapper:focus-within {
             border-color: var(--primary);
             box-shadow: 0 0 0 2px rgba(16, 163, 127, 0.2);
         }
@@ -331,13 +444,14 @@
             flex: 1;
             background: transparent;
             border: none;
-            padding: 15px 20px;
+            padding: 18px 20px;
             color: var(--light);
             font-size: 16px;
             resize: none;
-            max-height: 120px;
+            max-height: 150px;
             min-height: 60px;
             outline: none;
+            line-height: 1.5;
         }
         
         .send-btn {
@@ -350,6 +464,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            font-size: 18px;
         }
         
         .send-btn:hover {
@@ -359,36 +474,6 @@
         .send-btn:disabled {
             opacity: 0.5;
             cursor: not-allowed;
-        }
-        
-        .thinking-indicator {
-            display: none;
-            padding: 15px 20px;
-            align-items: center;
-            gap: 10px;
-            color: var(--gray);
-            font-size: 14px;
-        }
-        
-        .thinking-dots {
-            display: flex;
-            gap: 4px;
-        }
-        
-        .thinking-dot {
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: var(--gray);
-            animation: bounce 1.4s infinite ease-in-out;
-        }
-        
-        .thinking-dot:nth-child(1) {
-            animation-delay: -0.32s;
-        }
-        
-        .thinking-dot:nth-child(2) {
-            animation-delay: -0.16s;
         }
         
         .suggestions {
@@ -401,17 +486,26 @@
         .suggestion {
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
+            border-radius: 12px;
             padding: 15px;
             cursor: pointer;
             transition: all 0.3s;
             font-size: 14px;
             text-align: right;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
         
         .suggestion:hover {
             background: rgba(255, 255, 255, 0.1);
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            border-color: var(--primary);
+        }
+        
+        .suggestion i {
+            color: var(--primary);
+            font-size: 16px;
         }
         
         .empty-chat {
@@ -426,38 +520,81 @@
         }
         
         .empty-chat-icon {
-            font-size: 60px;
-            margin-bottom: 20px;
-            opacity: 0.5;
+            font-size: 80px;
+            margin-bottom: 25px;
+            opacity: 0.7;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
         
         .empty-chat h2 {
-            font-size: 24px;
-            margin-bottom: 10px;
+            font-size: 28px;
+            margin-bottom: 15px;
             color: var(--light);
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
         
         .empty-chat p {
-            font-size: 16px;
-            max-width: 600px;
+            font-size: 17px;
+            max-width: 700px;
             line-height: 1.6;
+            margin-bottom: 30px;
         }
         
         .code-block {
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 8px;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 10px;
             padding: 15px;
-            margin: 10px 0;
+            margin: 15px 0;
             font-family: 'Courier New', monospace;
             font-size: 14px;
             overflow-x: auto;
-            border-left: 3px solid var(--primary);
+            border-left: 4px solid var(--primary);
+            position: relative;
+        }
+        
+        .code-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            font-size: 12px;
+            color: var(--gray);
+        }
+        
+        .copy-code {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: var(--light);
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: all 0.3s;
+        }
+        
+        .copy-code:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .math-formula {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+            text-align: center;
+            font-family: 'Times New Roman', serif;
+            font-size: 18px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
         
         .typing-cursor {
             display: inline-block;
             width: 8px;
-            height: 16px;
+            height: 18px;
             background: var(--primary);
             margin-left: 2px;
             animation: blink 1s infinite;
@@ -466,7 +603,7 @@
         
         /* Animations */
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
+            from { opacity: 0; transform: translateY(15px); }
             to { opacity: 1; transform: translateY(0); }
         }
         
@@ -480,9 +617,9 @@
         }
         
         @keyframes pulse {
-            0% { opacity: 1; }
-            50% { opacity: 0.5; }
-            100% { opacity: 1; }
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
         }
         
         @keyframes blink {
@@ -492,7 +629,7 @@
         
         /* Scrollbar */
         ::-webkit-scrollbar {
-            width: 6px;
+            width: 8px;
         }
         
         ::-webkit-scrollbar-track {
@@ -501,7 +638,7 @@
         
         ::-webkit-scrollbar-thumb {
             background: var(--primary);
-            border-radius: 3px;
+            border-radius: 4px;
         }
         
         ::-webkit-scrollbar-thumb:hover {
@@ -509,6 +646,16 @@
         }
         
         /* Responsive */
+        @media (max-width: 1200px) {
+            .sidebar {
+                width: 280px;
+            }
+            
+            .suggestions {
+                grid-template-columns: 1fr;
+            }
+        }
+        
         @media (max-width: 968px) {
             .sidebar {
                 display: none;
@@ -516,6 +663,10 @@
             
             .chat-container {
                 gap: 0;
+            }
+            
+            .ai-capabilities {
+                display: none;
             }
         }
         
@@ -525,19 +676,42 @@
                 gap: 15px;
             }
             
-            nav ul {
-                gap: 15px;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            
-            .suggestions {
-                grid-template-columns: 1fr;
-            }
-            
             .message {
                 max-width: 95%;
+                padding: 15px;
             }
+            
+            .empty-chat h2 {
+                font-size: 24px;
+            }
+            
+            .empty-chat p {
+                font-size: 16px;
+            }
+        }
+        
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 20px;
+            border-radius: 10px;
+            color: white;
+            font-weight: 500;
+            z-index: 1000;
+            transition: all 0.3s;
+            transform: translateX(150%);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .notification.success {
+            background: var(--success);
+            transform: translateX(0);
+        }
+        
+        .notification.error {
+            background: var(--accent);
+            transform: translateX(0);
         }
     </style>
 </head>
@@ -549,17 +723,24 @@
                     <div class="logo-icon">Z</div>
                     <div class="logo-text">Zidan AI</div>
                 </div>
-                <nav>
-                    <ul>
-                        <li><a href="#"><i class="fas fa-home"></i> الرئيسية</a></li>
-                        <li><a href="#"><i class="fas fa-comments"></i> المحادثات</a></li>
-                        <li><a href="#"><i class="fas fa-cogs"></i> الإعدادات</a></li>
-                        <li><a href="#"><i class="fas fa-question-circle"></i> المساعدة</a></li>
-                    </ul>
-                </nav>
-                <div class="ai-status">
-                    <div class="status-dot"></div>
-                    <span>Zidan AI نشط</span>
+                
+                <div class="ai-capabilities">
+                    <div class="capability">
+                        <i class="fas fa-brain"></i>
+                        <span>ذكاء اصطناعي متقدم</span>
+                    </div>
+                    <div class="capability">
+                        <i class="fas fa-code"></i>
+                        <span>برمجة وحل مشاكل</span>
+                    </div>
+                    <div class="capability">
+                        <i class="fas fa-calculator"></i>
+                        <span>حسابات رياضية معقدة</span>
+                    </div>
+                    <div class="capability">
+                        <i class="fas fa-globe"></i>
+                        <span>معرفة عامة شاملة</span>
+                    </div>
                 </div>
             </div>
         </header>
@@ -567,26 +748,66 @@
         <div class="chat-container">
             <div class="sidebar">
                 <button class="new-chat-btn" id="newChatBtn">
-                    <i class="fas fa-plus"></i> محادثة جديدة
+                    <i class="fas fa-plus"></i> بدء محادثة جديدة
                 </button>
                 
+                <div class="ai-features">
+                    <div class="features-title">
+                        <i class="fas fa-star"></i>
+                        <span>إمكانيات Zidan AI</span>
+                    </div>
+                    <div class="features-grid">
+                        <div class="feature">
+                            <i class="fas fa-calculator"></i>
+                            <span>حل مسائل رياضية معقدة</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-code"></i>
+                            <span>برمجة بكافة اللغات</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-book"></i>
+                            <span>شرح مفاهيم علمية</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-lightbulb"></i>
+                            <span>إبداع أفكار ومشاريع</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-language"></i>
+                            <span>ترجمة وتحليل لغوي</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-chart-line"></i>
+                            <span>تحليل بيانات وإحصائيات</span>
+                        </div>
+                    </div>
+                </div>
+                
                 <div class="chat-history">
-                    <div class="chat-history-title">المحادثات السابقة</div>
-                    <div class="chat-item active">
-                        <i class="fas fa-message"></i>
-                        <span>مناقشة حول البرمجة</span>
+                    <div class="history-title">
+                        <i class="fas fa-history"></i>
+                        <span>المحادثات الحديثة</span>
                     </div>
-                    <div class="chat-item">
+                    <div class="history-item active">
                         <i class="fas fa-message"></i>
-                        <span>أسئلة حول الذكاء الاصطناعي</span>
+                        <span>محادثة عامة</span>
                     </div>
-                    <div class="chat-item">
-                        <i class="fas fa-message"></i>
-                        <span>مساعد في كتابة الكود</span>
+                    <div class="history-item">
+                        <i class="fas fa-calculator"></i>
+                        <span>حسابات رياضية</span>
                     </div>
-                    <div class="chat-item">
-                        <i class="fas fa-message"></i>
-                        <span>شرح خوارزميات التعلم الآلي</span>
+                    <div class="history-item">
+                        <i class="fas fa-code"></i>
+                        <span>مساعد برمجة</span>
+                    </div>
+                    <div class="history-item">
+                        <i class="fas fa-book"></i>
+                        <span>أسئلة علمية</span>
+                    </div>
+                    <div class="history-item">
+                        <i class="fas fa-globe"></i>
+                        <span>ثقافة عامة</span>
                     </div>
                 </div>
             </div>
@@ -596,7 +817,18 @@
                     <div class="chat-avatar">
                         <i class="fas fa-robot"></i>
                     </div>
-                    <div class="chat-title">Zidan AI</div>
+                    <div class="chat-info">
+                        <div class="chat-title">Zidan AI المتطور</div>
+                        <div class="chat-subtitle">مساعد ذكي متكامل - متصل وقادر على الإجابة عن أي سؤال</div>
+                    </div>
+                    <div class="chat-actions">
+                        <button class="action-btn" title="إعدادات">
+                            <i class="fas fa-cog"></i>
+                        </button>
+                        <button class="action-btn" title="بحث">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
                 </div>
                 
                 <div class="chat-messages" id="chatMessages">
@@ -604,21 +836,25 @@
                         <div class="empty-chat-icon">
                             <i class="fas fa-robot"></i>
                         </div>
-                        <h2>مرحباً! أنا Zidan AI</h2>
-                        <p>كيف يمكنني مساعدتك اليوم؟ أسألني عن أي شيء متعلق بالبرمجة، الذكاء الاصطناعي، أو أي موضوع آخر.</p>
+                        <h2>مرحباً! أنا Zidan AI المتطور</h2>
+                        <p>أنا مساعد ذكي متكامل أقدر على مساعدتك في أي مجال. اسألني عن الرياضيات، البرمجة، العلوم، الثقافة العامة، أو أي موضوع آخر!</p>
                         
                         <div class="suggestions">
-                            <div class="suggestion" data-prompt="اشرح لي مفهوم الذكاء الاصطناعي بكلمات بسيطة">
-                                اشرح لي مفهوم الذكاء الاصطناعي بكلمات بسيطة
+                            <div class="suggestion" data-prompt="كم عدد أيام الأسبوع؟">
+                                <i class="fas fa-calendar"></i>
+                                <span>كم عدد أيام الأسبوع؟</span>
                             </div>
-                            <div class="suggestion" data-prompt="كيف يمكنني إنشاء موقع ويب تفاعلي باستخدام JavaScript؟">
-                                كيف يمكنني إنشاء موقع ويب تفاعلي باستخدام JavaScript؟
+                            <div class="suggestion" data-prompt="اكتب كود Python لحل معادلة من الدرجة الثانية">
+                                <i class="fas fa-code"></i>
+                                <span>اكتب كود Python لحل معادلة من الدرجة الثانية</span>
                             </div>
-                            <div class="suggestion" data-prompt="ما هي أفضل طريقة لتعلم البرمجة للمبتدئين؟">
-                                ما هي أفضل طريقة لتعلم البرمجة للمبتدئين؟
+                            <div class="suggestion" data-prompt="ما هو الذكاء الاصطناعي وكيف يعمل؟">
+                                <i class="fas fa-brain"></i>
+                                <span>ما هو الذكاء الاصطناعي وكيف يعمل؟</span>
                             </div>
-                            <div class="suggestion" data-prompt="اكتب لي كود Python لحل مشكلة حسابية معقدة">
-                                اكتب لي كود Python لحل مشكلة حسابية معقدة
+                            <div class="suggestion" data-prompt="ما هي عاصمة فرنسا وكم عدد سكانها؟">
+                                <i class="fas fa-globe-europe"></i>
+                                <span>ما هي عاصمة فرنسا وكم عدد سكانها؟</span>
                             </div>
                         </div>
                     </div>
@@ -630,12 +866,12 @@
                         <div class="thinking-dot"></div>
                         <div class="thinking-dot"></div>
                     </div>
-                    <span>Zidan AI يفكر...</span>
+                    <span>Zidan AI يفكر ويحلل...</span>
                 </div>
                 
                 <div class="chat-input-container">
-                    <div class="chat-input-wrapper">
-                        <textarea class="chat-input" id="chatInput" placeholder="اكتب رسالتك هنا... (اضغط Enter للإرسال)" rows="1"></textarea>
+                    <div class="input-wrapper">
+                        <textarea class="chat-input" id="chatInput" placeholder="اسأل Zidan AI عن أي شيء... (اضغط Enter للإرسال)" rows="1"></textarea>
                         <button class="send-btn" id="sendBtn">
                             <i class="fas fa-paper-plane"></i>
                         </button>
@@ -654,81 +890,271 @@
         const thinkingIndicator = document.getElementById('thinkingIndicator');
         const emptyChat = document.getElementById('emptyChat');
         
-        // قاعدة معارف Zidan AI
-        const aiKnowledgeBase = {
-            greetings: [
-                "مرحباً! كيف يمكنني مساعدتك اليوم؟",
-                "أهلاً وسهلاً! أنا Zidan AI، جاهز للإجابة على أسئلتك.",
-                "مرحباً بك! أنا هنا لمساعدتك في أي استفسار لديك."
-            ],
+        // محرك الذكاء الاصطناعي المتطور
+        class ZidanAI {
+            constructor() {
+                this.knowledgeBase = this.initializeKnowledge();
+            }
             
-            programming: {
-                "javascript": "جافاسكريبت هي لغة برمجة عالية المستوى تستخدم principalmente لتطوير الويب. هي لغة مفسرة، كائنية التوجه، وتدريب البرمجة الوظيفية.\n\nمثال على دالة بسيطة:\n```javascript\nfunction greet(name) {\n    return `مرحباً ${name}!`;\n}\n\nconsole.log(greet('زيدان')); // مرحباً زيدان!\n```",
+            initializeKnowledge() {
+                return {
+                    // معلومات عامة
+                    general: {
+                        daysOfWeek: "الأسبوع يتكون من 7 أيام، وهم:\n- الإثنين\n- الثلاثاء\n- الأربعاء\n- الخميس\n- الجمعة\n- السبت\n- الأحد",
+                        months: "السنة تتكون من 12 شهراً، وهم:\n- يناير (31 يوم)\n- فبراير (28/29 يوم)\n- مارس (31 يوم)\n- أبريل (30 يوم)\n- مايو (31 يوم)\n- يونيو (30 يوم)\n- يوليو (31 يوم)\n- أغسطس (31 يوم)\n- سبتمبر (30 يوم)\n- أكتوبر (31 يوم)\n- نوفمبر (30 يوم)\n- ديسمبر (31 يوم)",
+                        planets: "المجموعة الشمسية تحتوي على 8 كواكب:\n- عطارد\n- الزهرة\n- الأرض\n- المريخ\n- المشتري\n- زحل\n- أورانوس\n- نبتون"
+                    },
+                    
+                    // رياضيات
+                    math: {
+                        quadraticEquation: (a, b, c) => {
+                            const discriminant = b * b - 4 * a * c;
+                            if (discriminant > 0) {
+                                const x1 = (-b + Math.sqrt(discriminant)) / (2 * a);
+                                const x2 = (-b - Math.sqrt(discriminant)) / (2 * a);
+                                return `المعادلة: ${a}x² + ${b}x + ${c} = 0\n\nالحل:\nx₁ = ${x1.toFixed(2)}\nx₂ = ${x2.toFixed(2)}`;
+                            } else if (discriminant === 0) {
+                                const x = -b / (2 * a);
+                                return `المعادلة: ${a}x² + ${b}x + ${c} = 0\n\nالحل (جذر مزدوج):\nx = ${x.toFixed(2)}`;
+                            } else {
+                                const realPart = (-b / (2 * a)).toFixed(2);
+                                const imaginaryPart = (Math.sqrt(-discriminant) / (2 * a)).toFixed(2);
+                                return `المعادلة: ${a}x² + ${b}x + ${c} = 0\n\nالحل (أعداد مركبة):\nx₁ = ${realPart} + ${imaginaryPart}i\nx₂ = ${realPart} - ${imaginaryPart}i`;
+                            }
+                        },
+                        
+                        fibonacci: (n) => {
+                            let sequence = [0, 1];
+                            for (let i = 2; i < n; i++) {
+                                sequence.push(sequence[i-1] + sequence[i-2]);
+                            }
+                            return `متتالية فيبوناتشي الأولى ${n} أعداد:\n${sequence.slice(0, n).join(', ')}`;
+                        },
+                        
+                        primeNumbers: (n) => {
+                            const primes = [];
+                            for (let i = 2; primes.length < n; i++) {
+                                let isPrime = true;
+                                for (let j = 2; j <= Math.sqrt(i); j++) {
+                                    if (i % j === 0) {
+                                        isPrime = false;
+                                        break;
+                                    }
+                                }
+                                if (isPrime) primes.push(i);
+                            }
+                            return `الأعداد الأولية الأولى ${n} عدد:\n${primes.join(', ')}`;
+                        }
+                    },
+                    
+                    // برمجة
+                    programming: {
+                        python: {
+                            quadraticSolver: `# حل معادلة من الدرجة الثانية
+import math
+
+def solve_quadratic(a, b, c):
+    """حل معادلة من الدرجة الثانية: ax² + bx + c = 0"""
+    # حساب المميز
+    discriminant = b**2 - 4*a*c
+    
+    if discriminant > 0:
+        # حلان حقيقيان مختلفان
+        x1 = (-b + math.sqrt(discriminant)) / (2*a)
+        x2 = (-b - math.sqrt(discriminant)) / (2*a)
+        return f"الحلان: x₁ = {x1:.2f}, x₂ = {x2:.2f}"
+    elif discriminant == 0:
+        # حل حقيقي مزدوج
+        x = -b / (2*a)
+        return f"الحل المزدوج: x = {x:.2f}"
+    else:
+        # حلان مركبان
+        real_part = -b / (2*a)
+        imaginary_part = math.sqrt(-discriminant) / (2*a)
+        return f"الحلان المركبان: x₁ = {real_part:.2f} + {imaginary_part:.2f}i, x₂ = {real_part:.2f} - {imaginary_part:.2f}i"
+
+# مثال للاستخدام
+print(solve_quadratic(1, -3, 2))  # x² - 3x + 2 = 0
+print(solve_quadratic(1, 2, 1))   # x² + 2x + 1 = 0
+print(solve_quadratic(1, 0, 1))   # x² + 1 = 0`
+                        },
+                        
+                        javascript: {
+                            calculator: `// آلة حاسبة متقدمة في JavaScript
+class AdvancedCalculator {
+    constructor() {
+        this.memory = 0;
+        this.history = [];
+    }
+    
+    add(a, b) {
+        const result = a + b;
+        this.history.push(\`\${a} + \${b} = \${result}\`);
+        return result;
+    }
+    
+    subtract(a, b) {
+        const result = a - b;
+        this.history.push(\`\${a} - \${b} = \${result}\`);
+        return result;
+    }
+    
+    multiply(a, b) {
+        const result = a * b;
+        this.history.push(\`\${a} × \${b} = \${result}\`);
+        return result;
+    }
+    
+    divide(a, b) {
+        if (b === 0) throw new Error('القسمة على صفر غير مسموحة');
+        const result = a / b;
+        this.history.push(\`\${a} ÷ \${b} = \${result}\`);
+        return result;
+    }
+    
+    power(base, exponent) {
+        const result = Math.pow(base, exponent);
+        this.history.push(\`\${base}^\${exponent} = \${result}\`);
+        return result;
+    }
+    
+    getHistory() {
+        return this.history;
+    }
+}
+
+// مثال للاستخدام
+const calc = new AdvancedCalculator();
+console.log(calc.add(5, 3));       // 8
+console.log(calc.multiply(4, 2));  // 8
+console.log(calc.power(2, 3));     // 8
+console.log(calc.getHistory());`
+                        }
+                    },
+                    
+                    // علوم وثقافة
+                    science: {
+                        aiExplanation: `الذكاء الاصطناعي (Artificial Intelligence) هو مجال من علوم الكمبيوتر يهدف إلى إنشاء آلات قادرة على أداء المهام التي تتطلب ذكاءً بشرياً.
+
+أنواع الذكاء الاصطناعي:
+1. الذكاء الاصطناعي الضيق (Narrow AI): متخصص في مهام محددة
+2. الذكاء الاصطناعي العام (General AI): قادر على أداء أي مهمة فكرية
+3. الذكاء الاصطناعي الفائق (Superintelligent AI): يفوق الذكاء البشري
+
+تقنيات الذكاء الاصطناعي:
+- التعلم الآلي (Machine Learning)
+- الشبكات العصبية (Neural Networks)
+- المعالجة اللغوية الطبيعية (NLP)
+- الرؤية الحاسوبية (Computer Vision)`,
+                        
+                        countries: {
+                            france: "فرنسا:\n- العاصمة: باريس\n- عدد السكان: حوالي 68 مليون نسمة\n- اللغة الرسمية: الفرنسية\n- العملة: اليورو",
+                            egypt: "مصر:\n- العاصمة: القاهرة\n- عدد السكان: حوالي 104 مليون نسمة\n- اللغة الرسمية: العربية\n- العملة: الجنيه المصري",
+                            usa: "الولايات المتحدة الأمريكية:\n- العاصمة: واشنطن\n- عدد السكان: حوالي 331 مليون نسمة\n- اللغة: الإنجليزية (رسمية بحكم الأمر الواقع)\n- العملة: الدولار الأمريكي"
+                        }
+                    }
+                };
+            }
+            
+            // محاكاة معالجة الذكاء الاصطناعي
+            async processQuestion(question) {
+                // إظهار مؤشر التفكير
+                thinkingIndicator.style.display = 'flex';
                 
-                "python": "بايثون هي لغة برمجة عالية المستوى، سهلة التعلم وقوية. تستخدم في مجالات متعددة مثل تطوير الويب، تحليل البيانات، الذكاء الاصطناعي.\n\nمثال على دالة بسيطة:\n```python\ndef greet(name):\n    return f'مرحباً {name}!'\n\nprint(greet('زيدان'))  # مرحباً زيدان!\n```",
+                // محاكاة وقت المعالجة
+                await new Promise(resolve => setTimeout(resolve, 1000 + Math.random() * 2000));
                 
-                "html": "HTML هي لغة ترميز تستخدم لإنشاء هيكل صفحات الويب. تعمل مع CSS وJavaScript لإنشاء مواقع ويب كاملة.\n\nمثال على هيكل أساسي:\n```html\n<!DOCTYPE html>\n<html>\n<head>\n    <title>صفحتي</title>\n</head>\n<body>\n    <h1>مرحباً بالعالم!</h1>\n</body>\n</html>\n```"
-            },
-            
-            ai: "الذكاء الاصطناعي (AI) هو مجال من علوم الكمبيوتر يهتم بإنشاء آلات قادرة على أداء المهام التي تتطلب ذكاءً بشرياً. يشمل التعلم الآلي، المعالجة اللغوية الطبيعية، الرؤية الحاسوبية وغيرها.\n\nأنواع الذكاء الاصطناعي:\n1. الذكاء الاصطناعي الضيق: متخصص في مهام محددة\n2. الذكاء الاصطناعي العام: قادر على أداء أي مهمة فكرية\n3. الذكاء الاصطناعي الفائق: يفوق الذكاء البشري في جميع المجالات",
-            
-            learning: "أفضل طريقة لتعلم البرمجة:\n\n1. ابدأ بلغة بسيطة مثل Python\n2. تعلم الأساسيات: المتغيرات، الشروط، الحلقات، الدوال\n3. مارس يومياً وابني مشاريع صغيرة\n4. اقرأ كود الآخرين وتعلم منهم\n5. لا تخف من ارتكاب الأخطاء، فهي جزء من التعلم\n6. انضم لمجتمعات البرمجة لتبادل المعرفة",
-            
-            default: "هذا سؤال مثير للاهتمام! دعني أفكر في أفضل طريقة للإجابة عليه...\n\nبشكل عام، أنا Zidan AI مصمم لمساعدتك في مجموعة واسعة من المواضيع بما في ذلك البرمجة، الذكاء الاصطناعي، الرياضيات، العلوم، وغيرها الكثير. هل يمكنك توضيح سؤالك أكثر أو طرح سؤال محدد؟"
-        };
-        
-        // محاكاة استجابة الذكاء الاصطناعي
-        function simulateAIResponse(userMessage) {
-            // إظهار مؤشر التفكير
-            thinkingIndicator.style.display = 'flex';
-            
-            return new Promise((resolve) => {
-                // محاكاة وقت معالجة (بين 1-3 ثواني)
-                const thinkingTime = 1000 + Math.random() * 2000;
+                // إخفاء مؤشر التفكير
+                thinkingIndicator.style.display = 'none';
                 
-                setTimeout(() => {
-                    // إخفاء مؤشر التفكير
-                    thinkingIndicator.style.display = 'none';
-                    
-                    let response = "";
-                    
-                    // تحليل الرسالة وتوليد رد مناسب
-                    const message = userMessage.toLowerCase();
-                    
-                    if (message.includes("مرحبا") || message.includes("اهلا") || message.includes("اهلاً")) {
-                        const greetings = aiKnowledgeBase.greetings;
-                        response = greetings[Math.floor(Math.random() * greetings.length)];
+                return this.generateResponse(question);
+            }
+            
+            generateResponse(question) {
+                const q = question.toLowerCase();
+                
+                // معلومات عامة
+                if (q.includes('أيام الأسبوع') || q.includes('عدد أيام')) {
+                    return this.knowledgeBase.general.daysOfWeek;
+                }
+                
+                if (q.includes('شهور السنة') || q.includes('عدد شهور')) {
+                    return this.knowledgeBase.general.months;
+                }
+                
+                if (q.includes('كواكب') || q.includes('مجموعة شمسية')) {
+                    return this.knowledgeBase.general.planets;
+                }
+                
+                // رياضيات
+                if (q.includes('معادلة') && q.includes('درجة ثانية')) {
+                    // استخراج الأرقام من السؤال
+                    const numbers = question.match(/-?\d+/g);
+                    if (numbers && numbers.length >= 3) {
+                        const [a, b, c] = numbers.map(Number);
+                        return this.knowledgeBase.math.quadraticEquation(a, b, c);
                     }
-                    else if (message.includes("جافا") || message.includes("javascript")) {
-                        response = aiKnowledgeBase.programming.javascript;
-                    }
-                    else if (message.includes("بايثون") || message.includes("python")) {
-                        response = aiKnowledgeBase.programming.python;
-                    }
-                    else if (message.includes("html") || message.includes("css")) {
-                        response = aiKnowledgeBase.programming.html;
-                    }
-                    else if (message.includes("ذكاء اصطناعي") || message.includes("ai") || message.includes("artificial intelligence")) {
-                        response = aiKnowledgeBase.ai;
-                    }
-                    else if (message.includes("تعلم") || message.includes("برمجة") || message.includes("مبتدئ")) {
-                        response = aiKnowledgeBase.learning;
-                    }
-                    else if (message.includes("كود") || message.includes("برنامج") || message.includes("دالة")) {
-                        response = "أحتاج إلى مزيد من التفاصيل لمساعدتك في كتابة الكود. هل يمكنك:\n\n1. تحديد لغة البرمجة التي تريد استخدامها\n2. وصف الوظيفة المطلوبة بالتفصيل\n3. ذكر أي متطلبات أو شروط خاصة\n\nمثال: 'أريد دالة في Python تقبل مصفوفة أرقام وتعيد مجموعها مع التحقق من صحة المدخلات'";
-                    }
-                    else {
-                        response = aiKnowledgeBase.default;
-                    }
-                    
-                    resolve(response);
-                }, thinkingTime);
-            });
+                    return "أحتاج إلى معاملات المعادلة (a, b, c) لحل معادلة من الدرجة الثانية. مثال: 'حل المعادلة 2x² - 4x + 2 = 0'";
+                }
+                
+                if (q.includes('فيبوناتشي')) {
+                    const n = parseInt(question.match(/\d+/)) || 10;
+                    return this.knowledgeBase.math.fibonacci(n);
+                }
+                
+                if (q.includes('أولية') || q.includes('prime')) {
+                    const n = parseInt(question.match(/\d+/)) || 10;
+                    return this.knowledgeBase.math.primeNumbers(n);
+                }
+                
+                // برمجة
+                if (q.includes('بايثون') && q.includes('معادلة')) {
+                    return "```python\n" + this.knowledgeBase.programming.python.quadraticSolver + "\n```";
+                }
+                
+                if (q.includes('جافاسكريبت') && q.includes('حاسبة')) {
+                    return "```javascript\n" + this.knowledgeBase.programming.javascript.calculator + "\n```";
+                }
+                
+                // علوم
+                if (q.includes('ذكاء اصطناعي') || q.includes('ai')) {
+                    return this.knowledgeBase.science.aiExplanation;
+                }
+                
+                if (q.includes('فرنسا') || q.includes('باريس')) {
+                    return this.knowledgeBase.science.countries.france;
+                }
+                
+                if (q.includes('مصر') || q.includes('القاهرة')) {
+                    return this.knowledgeBase.science.countries.egypt;
+                }
+                
+                if (q.includes('أمريكا') || q.includes('الولايات')) {
+                    return this.knowledgeBase.science.countries.usa;
+                }
+                
+                // رد افتراضي ذكي
+                return this.generateSmartResponse(question);
+            }
+            
+            generateSmartResponse(question) {
+                const responses = [
+                    `هذا سؤال مثير للاهتمام! دعني أفكر في أفضل طريقة للإجابة عليه...\n\nبناءً على سؤالك، يمكنني مساعدتك في:\n\n• تقديم معلومات مفصلة عن الموضوع\n• حل مشاكل رياضية أو برمجية\n• شرح مفاهيم علمية\n• تقديم نصائح عملية\n\nهل يمكنك توضيح سؤالك أكثر؟`,
+
+                    `أفهم أنك تبحث عن معلومات حول "${question}". كمختبر ذكاء اصطناعي متقدم، لدي معرفة واسعة في:\n\n- الرياضيات والعلوم\n- البرمجة والتقنية\n- الثقافة العامة\n- التاريخ والجغرافيا\n\nما الجانب الذي تريد التركيز عليه؟`,
+
+                    `سؤالك يلامس موضوعًا مهمًا. كمساعد ذكي، أستطيع:\n\n1. تحليل المشكلات المعقدة\n2. تقديم حلول عملية\n3. شرح المفاهيم بطريقة مبسطة\n4. تقديم أمثلة وتطبيقات\n\nدعني أعرف كيف يمكنني مساعدتك بشكل أكثر تحديدًا.`
+                ];
+                
+                return responses[Math.floor(Math.random() * responses.length)];
+            }
         }
+        
+        // إنشاء مثيل الذكاء الاصطناعي
+        const zidanAI = new ZidanAI();
         
         // إضافة رسالة إلى الدردشة
         function addMessage(content, isUser = false) {
-            // إخفاء الشاشة الفارغة إذا كانت موجودة
             if (emptyChat.style.display !== 'none') {
                 emptyChat.style.display = 'none';
             }
@@ -739,19 +1165,34 @@
             const messageContent = document.createElement('div');
             messageContent.className = 'message-content';
             
-            // إذا كان الرد يحتوي على كود، نقوم بصياغته بشكل خاص
-            if (!isUser && content.includes('```')) {
-                const parts = content.split('```');
-                let formattedContent = '';
+            // معالجة المحتوى (كود، صيغ رياضية، إلخ)
+            if (!isUser) {
+                let formattedContent = content;
                 
-                for (let i = 0; i < parts.length; i++) {
-                    if (i % 2 === 0) {
-                        // نص عادي
-                        formattedContent += parts[i];
-                    } else {
-                        // كود
-                        formattedContent += `<div class="code-block">${parts[i]}</div>`;
+                // معالجة الكود
+                if (content.includes('```')) {
+                    const parts = content.split('```');
+                    formattedContent = '';
+                    
+                    for (let i = 0; i < parts.length; i++) {
+                        if (i % 2 === 0) {
+                            formattedContent += parts[i];
+                        } else {
+                            formattedContent += `<div class="code-block">
+                                <div class="code-header">
+                                    <span>كود برمجي</span>
+                                    <button class="copy-code" onclick="copyCode(this)">نسخ</button>
+                                </div>
+                                <pre>${parts[i]}</pre>
+                            </div>`;
+                        }
                     }
+                }
+                
+                // معالجة الصيغ الرياضية
+                if (content.includes('x²') || content.includes('=')) {
+                    formattedContent = formattedContent.replace(/(\d+x²\s*[+-]\s*\d+x\s*[+-]\s*\d+\s*=\s*0)/g, 
+                        '<div class="math-formula">$1</div>');
                 }
                 
                 messageContent.innerHTML = formattedContent;
@@ -759,45 +1200,50 @@
                 messageContent.textContent = content;
             }
             
-            const messageTime = document.createElement('div');
-            messageTime.className = 'message-time';
-            messageTime.textContent = new Date().toLocaleTimeString('ar-EG', { 
+            const messageMeta = document.createElement('div');
+            messageMeta.className = 'message-meta';
+            
+            const timeSpan = document.createElement('span');
+            timeSpan.textContent = new Date().toLocaleTimeString('ar-EG', { 
                 hour: '2-digit', 
                 minute: '2-digit' 
             });
             
+            const messageActions = document.createElement('div');
+            messageActions.className = 'message-actions';
+            
+            if (!isUser) {
+                messageActions.innerHTML = `
+                    <button class="msg-action" title="إعجاب"><i class="fas fa-thumbs-up"></i></button>
+                    <button class="msg-action" title="عدم إعجاب"><i class="fas fa-thumbs-down"></i></button>
+                    <button class="msg-action" title="نسخ"><i class="fas fa-copy"></i></button>
+                `;
+            }
+            
+            messageMeta.appendChild(timeSpan);
+            messageMeta.appendChild(messageActions);
+            
             messageDiv.appendChild(messageContent);
-            messageDiv.appendChild(messageTime);
+            messageDiv.appendChild(messageMeta);
             
             chatMessages.appendChild(messageDiv);
-            
-            // التمرير إلى الأسفل لرؤية أحدث رسالة
             chatMessages.scrollTop = chatMessages.scrollHeight;
         }
         
         // إرسال رسالة
-        function sendMessage() {
+        async function sendMessage() {
             const message = chatInput.value.trim();
-            
             if (message === '') return;
             
-            // إضافة رسالة المستخدم
             addMessage(message, true);
-            
-            // مسح حقل الإدخال
             chatInput.value = '';
-            
-            // إعادة ضبط ارتفاع حقل الإدخال
             chatInput.style.height = 'auto';
             
-            // محاكاة استجابة الذكاء الاصطناعي
-            simulateAIResponse(message).then(response => {
-                // عرض الرد مع تأثير الكتابة
-                typeResponse(response);
-            });
+            const response = await zidanAI.processQuestion(message);
+            typeResponse(response);
         }
         
-        // محاكاة الكتابة التدريجية للرد
+        // تأثير الكتابة
         function typeResponse(response) {
             const messageDiv = document.createElement('div');
             messageDiv.className = 'message ai-message';
@@ -805,40 +1251,57 @@
             const messageContent = document.createElement('div');
             messageContent.className = 'message-content';
             
-            const messageTime = document.createElement('div');
-            messageTime.className = 'message-time';
-            messageTime.textContent = new Date().toLocaleTimeString('ar-EG', { 
+            const messageMeta = document.createElement('div');
+            messageMeta.className = 'message-meta';
+            
+            const timeSpan = document.createElement('span');
+            timeSpan.textContent = new Date().toLocaleTimeString('ar-EG', { 
                 hour: '2-digit', 
                 minute: '2-digit' 
             });
             
+            const messageActions = document.createElement('div');
+            messageActions.className = 'message-actions';
+            messageActions.innerHTML = `
+                <button class="msg-action" title="إعجاب"><i class="fas fa-thumbs-up"></i></button>
+                <button class="msg-action" title="عدم إعجاب"><i class="fas fa-thumbs-down"></i></button>
+                <button class="msg-action" title="نسخ"><i class="fas fa-copy"></i></button>
+            `;
+            
+            messageMeta.appendChild(timeSpan);
+            messageMeta.appendChild(messageActions);
+            
             messageDiv.appendChild(messageContent);
-            messageDiv.appendChild(messageTime);
+            messageDiv.appendChild(messageMeta);
             
             chatMessages.appendChild(messageDiv);
             
             let index = 0;
-            const typingSpeed = 20; // ملي ثانية بين كل حرف
+            const typingSpeed = 10;
             
             function typeCharacter() {
                 if (index < response.length) {
-                    // إذا كان هناك كود في الرد، نتعامل معه بشكل خاص
+                    // معالجة الكود المميز
                     if (response.substring(index).startsWith('```')) {
                         const codeEnd = response.indexOf('```', index + 3);
                         if (codeEnd !== -1) {
                             const codeBlock = response.substring(index, codeEnd + 3);
-                            messageContent.innerHTML += `<div class="code-block">${codeBlock.substring(3, codeBlock.length - 3)}</div>`;
+                            messageContent.innerHTML += `<div class="code-block">
+                                <div class="code-header">
+                                    <span>كود برمجي</span>
+                                    <button class="copy-code" onclick="copyCode(this)">نسخ</button>
+                                </div>
+                                <pre>${codeBlock.substring(3, codeBlock.length - 3)}</pre>
+                            </div>`;
                             index = codeEnd + 3;
-                            setTimeout(typeCharacter, typingSpeed * 5);
+                            setTimeout(typeCharacter, typingSpeed * 10);
                             return;
                         }
                     }
                     
-                    messageContent.textContent += response.charAt(index);
+                    messageContent.innerHTML += response.charAt(index);
                     index++;
                     setTimeout(typeCharacter, typingSpeed);
-                    
-                    // التمرير إلى الأسفل مع كل حرف جديد
                     chatMessages.scrollTop = chatMessages.scrollHeight;
                 }
             }
@@ -853,7 +1316,29 @@
             chatInput.focus();
         }
         
-        // أحداث
+        // نسخ الكود
+        window.copyCode = function(button) {
+            const codeBlock = button.closest('.code-block');
+            const code = codeBlock.querySelector('pre').textContent;
+            
+            navigator.clipboard.writeText(code).then(() => {
+                showNotification('تم نسخ الكود بنجاح!', 'success');
+            });
+        };
+        
+        // إظهار الإشعارات
+        function showNotification(message, type) {
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
+        }
+        
+        // الأحداث
         sendBtn.addEventListener('click', sendMessage);
         
         chatInput.addEventListener('keydown', (e) => {
@@ -865,7 +1350,6 @@
         
         newChatBtn.addEventListener('click', startNewChat);
         
-        // السماح لحقل الإدخال بالتوسع مع المحتوى
         chatInput.addEventListener('input', function() {
             this.style.height = 'auto';
             this.style.height = (this.scrollHeight) + 'px';
@@ -880,18 +1364,18 @@
             });
         });
         
-        // رسالة ترحيب تلقائية عند التحميل
+        // رسالة ترحيب
         window.addEventListener('load', () => {
             setTimeout(() => {
                 if (emptyChat.style.display !== 'none') {
-                    const welcomeMessage = "مرحباً! أنا Zidan AI، مساعدك الذكي. يمكنني مساعدتك في:\n\n• البرمجة وتطوير الويب\n• الذكاء الاصطناعي والتعلم الآلي\n• حل المشكلات الرياضية\n• الإجابة على الأسئلة العامة\n\nلا تتردد في سؤالي عن أي شيء!";
+                    const welcomeMessage = "مرحباً! أنا Zidan AI المتطور 🧠\n\nأنا مساعد ذكي متكامل أقدر على:\n\n• حل المسائل الرياضية المعقدة\n• كتابة الكود البرمجي بأي لغة\n• الإجابة عن الأسئلة العلمية\n• تقديم المعلومات الثقافية\n• تحليل البيانات وحل المشكلات\n\nجرب أن تسألني:\n'كم عدد أيام الأسبوع؟' أو 'اكتب كود Python لحل معادلة رياضية'";
                     typeResponse(welcomeMessage);
                     emptyChat.style.display = 'none';
                 }
-            }, 1000);
+            }, 1500);
         });
         
-        // التركيز على حقل الإدخال عند النقر في أي مكان
+        // التركيز على حقل الإدخال
         document.addEventListener('click', () => {
             chatInput.focus();
         });
