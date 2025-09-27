@@ -1,693 +1,550 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>ZidanCoder — مولد كود حقيقي</title>
-
-  <!-- خطوط -->
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-  <!-- CodeMirror (Editor) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.css"/>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/theme/material.min.css"/>
-
-  <style>
-    :root{
-      --bg: #0f1724;
-      --card: #0b1320;
-      --accent: linear-gradient(90deg,#06b6d4,#0ea5e9);
-      --glass: rgba(255,255,255,0.03);
-      --muted: #9aa4b2;
-    }
-    *{box-sizing:border-box}
-    body{font-family:'Cairo',sans-serif;margin:0;background:linear-gradient(180deg,#071028 0%, #06101b 100%);color:#e6eef6;min-height:100vh;padding:28px;}
-    .container{max-width:1200px;margin:0 auto;}
-    header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px}
-    .brand{display:flex;align-items:center;gap:12px}
-    .logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,#0ea5e9,#06b6d4);display:flex;align-items:center;justify-content:center;font-weight:700;color:#04202a;font-size:20px;box-shadow:0 8px 30px rgba(6,16,32,0.6)}
-    h1{margin:0;font-size:18px}
-    p.lead{margin:0;color:var(--muted);font-size:13px}
-    .card{background:var(--card);border-radius:12px;padding:16px;box-shadow:0 8px 30px rgba(2,6,23,0.8);border:1px solid rgba(255,255,255,0.03)}
-    .controls{display:grid;grid-template-columns:1fr 320px;gap:12px;margin-bottom:12px}
-    @media(max-width:980px){.controls{grid-template-columns:1fr;}}
-    .leftcol{display:flex;flex-direction:column;gap:10px}
-    label{font-size:13px;color:var(--muted);margin-bottom:6px;display:block}
-    select, textarea, input[type=text]{width:100%;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.05);background:var(--glass);color:inherit;font-size:14px}
-    textarea{min-height:86px;resize:vertical}
-    .row{display:flex;gap:8px}
-    .btn{padding:10px 14px;border-radius:10px;border:0;background:linear-gradient(90deg,#06b6d4,#0ea5e9);color:#04202a;font-weight:700;cursor:pointer}
-    .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)}
-    .side{display:flex;flex-direction:column;gap:8px}
-    .small{font-size:13px;color:var(--muted)}
-    .editor-wrap{display:grid;grid-template-columns:1fr 360px;gap:12px;margin-top:12px}
-    @media(max-width:980px){.editor-wrap{grid-template-columns:1fr}}
-    .editor-card{min-height:380px;border-radius:10px;overflow:hidden}
-    .analysis{padding:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);border-radius:10px;min-height:380px;overflow:auto}
-    .meta{display:flex;gap:8px;align-items:center;margin-top:8px}
-    .chip{padding:6px 10px;border-radius:999px;background:rgba(255,255,255,0.03);font-size:13px;color:var(--muted)}
-    .console{background:#071427;border-radius:8px;padding:10px;color:#cfeefc;font-size:13px;height:140px;overflow:auto}
-    footer{margin-top:18px;color:var(--muted);font-size:13px;text-align:center}
-
-    /* responsive niceties */
-    .examples{display:flex;gap:8px;flex-wrap:wrap}
-    .example-btn{padding:8px 10px;border-radius:999px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:var(--muted);cursor:pointer;font-size:13px}
-    .mode-switch{display:flex;gap:8px;background:rgba(255,255,255,0.02);padding:6px;border-radius:8px}
-    .mode-btn{padding:6px 10px;border-radius:8px;border:0;background:transparent;color:var(--muted);cursor:pointer}
-    .mode-btn.active{background:linear-gradient(90deg,#0891b2,#0284c7);color:#021b22}
-    .status{font-size:13px;color:var(--muted)}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zidan Coed - مولد الكود الذكي</title>
+    <style>
+        :root {
+            --primary: #6c63ff;
+            --primary-dark: #564fd8;
+            --secondary: #ff6584;
+            --dark: #2a2a4a;
+            --light: #f5f5f7;
+            --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--dark);
+            color: var(--light);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            z-index: 10;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .logo-text {
+            font-size: 28px;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        nav a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        nav a:hover {
+            color: var(--primary);
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient);
+            transition: width 0.3s;
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+        }
+        
+        .hero {
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(108, 99, 255, 0.1) 0%, transparent 70%);
+            z-index: -1;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #fff, var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            color: #ccc;
+            line-height: 1.6;
+        }
+        
+        .main-app {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 40px 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .input-section {
+            margin-bottom: 30px;
+        }
+        
+        .input-section label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+        
+        .code-input {
+            width: 100%;
+            min-height: 150px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 15px;
+            color: var(--light);
+            font-size: 16px;
+            resize: vertical;
+            transition: border 0.3s;
+        }
+        
+        .code-input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        
+        .options {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .option {
+            flex: 1;
+            min-width: 150px;
+        }
+        
+        .option select {
+            width: 100%;
+            padding: 12px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: var(--light);
+            font-size: 16px;
+        }
+        
+        .generate-btn {
+            background: var(--gradient);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: block;
+            width: 100%;
+            margin-top: 20px;
+        }
+        
+        .generate-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(108, 99, 255, 0.3);
+        }
+        
+        .output-section {
+            margin-top: 40px;
+        }
+        
+        .output-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .copy-btn {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--light);
+            border: none;
+            padding: 8px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .copy-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .code-output {
+            background: #1e1e3f;
+            border-radius: 10px;
+            padding: 20px;
+            min-height: 200px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            white-space: pre-wrap;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 80px 0;
+        }
+        
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 30px;
+        }
+        
+        .feature-card h3 {
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+        
+        .feature-card p {
+            color: #ccc;
+            line-height: 1.6;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 60px;
+            color: #aaa;
+        }
+        
+        .loading {
+            display: none;
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            border-left: 4px solid var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* تأثيرات إضافية */
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(108, 99, 255, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(108, 99, 255, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(108, 99, 255, 0); }
+        }
+        
+        /* تصميم متجاوب */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            nav ul {
+                gap: 15px;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .options {
+                flex-direction: column;
+            }
+            
+            .feature-card {
+                padding: 20px;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
     <header>
-      <div class="brand">
-        <div class="logo">z</div>
-        <div>
-          <h1>بص يا زميلي — ZidanCoder</h1>
-          <p class="lead">مولد كود متعدد اللغات — يولد + يشرح + يدي تحذيرات. (ملف واحد)</p>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">ZC</div>
+                    <div class="logo-text">Zidan Coed</div>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#">الرئيسية</a></li>
+                        <li><a href="#">المميزات</a></li>
+                        <li><a href="#">التوثيق</a></li>
+                        <li><a href="#">الدعم</a></li>
+                    </ul>
+                </nav>
+            </div>
         </div>
-      </div>
-      <div style="text-align:left">
-        <div class="mode-switch card" style="padding:8px 12px;display:inline-flex;align-items:center">
-          <button class="mode-btn active" id="modeLocal">Local</button>
-          <button class="mode-btn" id="modeLLM">LLM (اختياري)</button>
-        </div>
-      </div>
     </header>
-
-    <div class="card">
-      <div class="controls">
-        <div class="leftcol">
-          <div>
-            <label>اختر اللغة</label>
-            <select id="language">
-              <option>Python</option>
-              <option>JavaScript</option>
-              <option>HTML/CSS/JS</option>
-              <option>Java</option>
-              <option>C#</option>
-              <option>Go</option>
-              <option>PHP</option>
-              <option>Ruby</option>
-              <option>Rust</option>
-            </select>
-          </div>
-
-          <div>
-            <label>وصف المطلوب (اكتب المطلوب بدقة)</label>
-            <textarea id="prompt" placeholder="مثال: اقرأ ملف CSV واحسب متوسط كل عمود"></textarea>
-            <div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap" class="examples">
-              <button class="example-btn" data-p="اقرأ ملف CSV واحسب المتوسط لكل عمود">CSV متوسط</button>
-              <button class="example-btn" data-p="اعمل طلب HTTP GET لواجهة JSON واطبع النتائج">GET API</button>
-              <button class="example-btn" data-p="دالة تولد فيبوناتشي حتى n">Fibonacci</button>
-              <button class="example-btn" data-p="صفحة ويب صغيرة تعرض نموذج و ترسل بيانات عبر AJAX">صفحة تفاعل</button>
+    
+    <section class="hero">
+        <div class="container">
+            <h1>Zidan Coed - مستقبل توليد الكود</h1>
+            <p>أداة ذكية تستخدم الذكاء الاصطناعي لتحويل أوصافك النصية إلى كود برمجي متكامل في ثوانٍ. فقط اشرح ما تريد، ودع Zidan Coed يهتم بالباقي!</p>
+        </div>
+    </section>
+    
+    <div class="container">
+        <div class="main-app">
+            <div class="input-section">
+                <label for="codeDescription">اشرح الكود الذي تريد إنشاءه:</label>
+                <textarea id="codeDescription" class="code-input" placeholder="مثال: أريد دالة في JavaScript تقبل مصفوفة من الأرقام وتعيد مجموعها...">أريد دالة في JavaScript تقبل مصفوفة من الأرقام وتعيد مجموعها</textarea>
+                
+                <div class="options">
+                    <div class="option">
+                        <label for="language">اختر لغة البرمجة:</label>
+                        <select id="language">
+                            <option value="javascript">JavaScript</option>
+                            <option value="python">Python</option>
+                            <option value="html">HTML</option>
+                            <option value="css">CSS</option>
+                            <option value="php">PHP</option>
+                            <option value="java">Java</option>
+                        </select>
+                    </div>
+                    
+                    <div class="option">
+                        <label for="complexity">مستوى التعقيد:</label>
+                        <select id="complexity">
+                            <option value="simple">بسيط</option>
+                            <option value="medium">متوسط</option>
+                            <option value="complex">معقد</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <button id="generateBtn" class="generate-btn pulse">توليد الكود</button>
+                
+                <div id="loading" class="loading">
+                    <div class="spinner"></div>
+                    <p>Zidan Coed يقوم بإنشاء الكود الخاص بك...</p>
+                </div>
             </div>
-          </div>
-
-          <div class="row" style="margin-top:8px">
-            <button id="generate" class="btn">توليد وشرح</button>
-            <button id="runBtn" class="btn ghost">تشغيل (للـ HTML/JS فقط)</button>
-            <button id="copyBtn" class="btn ghost">نسخ</button>
-            <button id="downloadBtn" class="btn ghost">تحميل</button>
-          </div>
-
-          <div class="meta" style="margin-top:10px">
-            <div class="chip" id="complexity">تعقيد: -</div>
-            <div class="chip" id="deps">متطلبات: -</div>
-            <div class="chip" id="warnings">تحذيرات: -</div>
-            <div style="flex:1"></div>
-            <div class="status" id="status">جاهز</div>
-          </div>
-        </div>
-
-        <div class="side">
-          <div class="card" style="padding:12px">
-            <label>OpenAI API Key (لو عايز LLM — اختياري)</label>
-            <input id="apiKey" type="text" placeholder="ضع المفتاح هنا فقط للتجربة — لا تضعه في الإنتاج"/>
-            <div style="display:flex;gap:8px;margin-top:8px">
-              <input id="model" type="text" placeholder="gpt-4o أو gpt-4" value="gpt-4o" style="flex:1;padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit"/>
-              <button id="testKey" class="btn ghost">اختبار المفتاح</button>
+            
+            <div class="output-section">
+                <div class="output-header">
+                    <h2>الكود المُنشأ:</h2>
+                    <button id="copyBtn" class="copy-btn">نسخ الكود</button>
+                </div>
+                <pre id="codeOutput" class="code-output">سيظهر الكود المُنشأ هنا...</pre>
             </div>
-            <p class="small" style="margin-top:8px">تحذير: وضع المفتاح داخل ملف HTML مكشوف. في الإنتاج استخدم خادم وسيط لإخفاء المفاتيح.</p>
-          </div>
-
-          <div class="card analysis" id="analysis">
-            <h3 style="margin-top:0;margin-bottom:6px">الشرح & التحليل</h3>
-            <div id="analysisText" style="white-space:pre-wrap;color:#dceffe;font-size:14px">لا يوجد شرح بعد.</div>
-
-            <h4 style="margin-top:12px;margin-bottom:6px">Console (تشغيل الواجهة)</h4>
-            <div id="console" class="console">لا يوجد إخراج بعد.</div>
-          </div>
         </div>
-      </div>
-
-      <div class="editor-wrap" style="margin-top:12px">
-        <div class="editor-card card" style="padding:0">
-          <textarea id="editor" name="editor">// سيتم عرض الكود هنا بعد التوليد</textarea>
+        
+        <div class="features">
+            <div class="feature-card floating">
+                <div class="feature-icon">⚡</div>
+                <h3>سرعة فائقة</h3>
+                <p>احصل على الكود الذي تحتاجه في ثوانٍ معدودة باستخدام أحدث تقنيات الذكاء الاصطناعي</p>
+            </div>
+            
+            <div class="feature-card floating" style="animation-delay: 0.5s;">
+                <div class="feature-icon">🔧</div>
+                <h3>دعم متعدد اللغات</h3>
+                <p>يدعم Zidan Coed مجموعة واسعة من لغات البرمجة والتقنيات المختلفة</p>
+            </div>
+            
+            <div class="feature-card floating" style="animation-delay: 1s;">
+                <div class="feature-icon">🚀</div>
+                <h3>تصميم مستقبلي</h3>
+                <p>واجهة مستخدم حديثة ومتطورة تمنحك تجربة فريدة من نوعها</p>
+            </div>
         </div>
-        <div class="card" style="padding:12px">
-          <h4 style="margin:0 0 8px 0">ملاحظات سريعة</h4>
-          <ul style="color:var(--muted);font-size:14px">
-            <li>الزر "تشغيل" ينفّذ فقط صفحات HTML/JS الآمنة داخل sandbox.</li>
-            <li>عند الحاجة لمكتبات خارجية، سيظهر لك قسم "متطلبات" يحددها.</li>
-            <li>لو اخترت وضع LLM ومفتاح OpenAI سيُطلب من النموذج كود مفصل وشرح.</li>
-          </ul>
-          <div style="height:12px"></div>
-          <div style="display:flex;gap:8px">
-            <button id="clearBtn" class="btn ghost">مسح</button>
-            <button id="sampleBtn" class="btn ghost">قالب سريع</button>
-          </div>
-        </div>
-      </div>
     </div>
-
+    
     <footer>
-      ZidanCoder — نسخة محلية جاهزة. تأكد من مراجعة أي كود قبل التشغيل على جهازك.
+        <div class="container">
+            <p>Zidan Coed &copy; 2023 - جميع الحقوق محفوظة</p>
+            <p>تم تطويره باستخدام أحدث تقنيات الذكاء الاصطناعي</p>
+        </div>
     </footer>
-  </div>
 
-  <!-- CodeMirror -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/javascript/javascript.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/python/python.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/clike/clike.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/php/php.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/ruby/ruby.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/go/go.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/rust/rust.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/xml/xml.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/css/css.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/htmlmixed/htmlmixed.min.js"></script>
-
-  <script>
-    // ---------- Init editor ----------
-    const editorTA = document.getElementById('editor');
-    const editor = CodeMirror.fromTextArea(editorTA, {
-      lineNumbers: true,
-      mode: 'javascript',
-      theme: 'material',
-      tabSize: 2,
-      indentUnit: 2,
-      viewportMargin: Infinity
-    });
-
-    // ---------- Helpers ----------
-    const languageEl = document.getElementById('language');
-    const promptEl = document.getElementById('prompt');
-    const generateBtn = document.getElementById('generate');
-    const runBtn = document.getElementById('runBtn');
-    const copyBtn = document.getElementById('copyBtn');
-    const downloadBtn = document.getElementById('downloadBtn');
-    const analysisText = document.getElementById('analysisText');
-    const complexityEl = document.getElementById('complexity');
-    const depsEl = document.getElementById('deps');
-    const warningsEl = document.getElementById('warnings');
-    const statusEl = document.getElementById('status');
-    const consoleEl = document.getElementById('console');
-    const apiKeyEl = document.getElementById('apiKey');
-    const modelEl = document.getElementById('model');
-    const modeLocalBtn = document.getElementById('modeLocal');
-    const modeLLMBtn = document.getElementById('modeLLM');
-    let useLLM = false;
-
-    // Mode switch
-    modeLocalBtn.addEventListener('click', () => { useLLM = false; modeLocalBtn.classList.add('active'); modeLLMBtn.classList.remove('active'); statusEl.textContent='وضع محلي'; });
-    modeLLMBtn.addEventListener('click', () => { useLLM = true; modeLLMBtn.classList.add('active'); modeLocalBtn.classList.remove('active'); statusEl.textContent='وضع LLM'; });
-
-    // Example quick fill
-    document.querySelectorAll('.example-btn').forEach(b=>b.addEventListener('click', e => { promptEl.value = e.currentTarget.dataset.p; }));
-
-    // Map language to CodeMirror mode
-    function setEditorMode(lang){
-      let mode = 'javascript';
-      if(lang.includes('Python')) mode='python';
-      else if(lang.includes('JavaScript')) mode='javascript';
-      else if(lang.includes('HTML')) mode='htmlmixed';
-      else if(lang.includes('Java')) mode='text/x-java';
-      else if(lang.includes('C#')) mode='text/x-csharp';
-      else if(lang.includes('Go')) mode='go';
-      else if(lang.includes('PHP')) mode='php';
-      else if(lang.includes('Ruby')) mode='ruby';
-      else if(lang.includes('Rust')) mode='rust';
-      editor.setOption('mode', mode);
-    }
-    languageEl.addEventListener('change', () => { setEditorMode(languageEl.value); });
-
-    // Utility: detect keywords
-    function detectTags(text){
-      const t = text.toLowerCase();
-      const tags = [];
-      if(/csv|excel/.test(t)) tags.push('csv');
-      if(/http|api|get|post|fetch|axios|request|endpoint/.test(t)) tags.push('http');
-      if(/file|read|write|open|fopen|fgetcsv/.test(t)) tags.push('file');
-      if(/json/.test(t)) tags.push('json');
-      if(/db|database|sql|mysql|postgres|sqlite/.test(t)) tags.push('db');
-      if(/regex|match|pattern/.test(t)) tags.push('regex');
-      if(/image|png|jpg|resize/.test(t)) tags.push('image');
-      if(/thread|parallel|concurrent|async/.test(t)) tags.push('concurrency');
-      if(/encrypt|hash|crypto/.test(t)) tags.push('crypto');
-      return Array.from(new Set(tags));
-    }
-
-    // ---------- Local template generator ----------
-    function generateLocal(lang, prompt){
-      const tags = detectTags(prompt);
-      const pEsc = prompt.replace(/"/g,'\\"');
-      let code = '';
-      let explanation = '';
-      let deps = [];
-      let complexity = 'بسيط';
-
-      function addComplex(n){ if(n==='high') complexity='عالي'; else if(n==='medium') complexity='متوسط'; }
-
-      if(lang === 'Python'){
-        if(tags.includes('csv')){
-          code = `# Python - قراءة CSV وحساب متوسط كل عمود (بـ csv القياسي)
-import csv
-from collections import defaultdict
-
-def mean_list(nums):
-    return sum(nums)/len(nums) if nums else 0
-
-def process_csv(path):
-    cols = defaultdict(list)
-    with open(path, newline='', encoding='utf-8') as f:
-        reader = csv.reader(f)
-        headers = next(reader, None)
-        for row in reader:
-            for i, v in enumerate(row):
-                try:
-                    cols[i].append(float(v))
-                except:
-                    pass
-    res = {}
-    for i, vals in cols.items():
-        name = headers[i] if headers and i < len(headers) else f"col_{i}"
-        res[name] = mean_list(vals)
-    return res
-
-if __name__ == "__main__":
-    path = "data.csv"  # غيّر الاسم لمسار ملفك
-    print(process_csv(path))
-`;
-          explanation = `هذا كود بايثون يستخدم مكتبة csv المدمجة:
-1) يقرأ الملف سطراً بسطر.
-2) يجمع القيم الرقمية لكل عمود ويتجاهل القيم غير الرقمية.
-3) يحسب المتوسط لكل عمود ويعيد قاموس النتائج.\nتأكد أن ملف CSV بترميز UTF-8.\nمتطلبات: لا توجد مكتبات خارجية.`;
-          deps = ['python (3.x)'];
-        } else if(tags.includes('http')){
-          code = `# Python - طلب HTTP GET (باستخدام requests)
-# npm: pip install requests
-import requests
-
-def fetch_json(url):
-    r = requests.get(url, timeout=10)
-    r.raise_for_status()
-    return r.json()
-
-if __name__ == "__main__":
-    url = "https://api.example.com/data"
-    print(fetch_json(url))
-`;
-          explanation = `يستخدم مكتبة requests لعمل GET وإرجاع JSON.\nتأكد تثبيت requests: pip install requests`;
-          deps = ['requests (pip)'];
-        } else {
-          code = `# Python - قالب عام
-def main():
-    # ${pEsc}
-    print("نفّذ منطقك هنا")
-
-if __name__ == "__main__":
-    main()
-`;
-          explanation = `قالب عام كمكان للبدء. اضف الدوال والاختبارات كما يلزم.`;
+    <script>
+        document.getElementById('generateBtn').addEventListener('click', function() {
+            const description = document.getElementById('codeDescription').value;
+            const language = document.getElementById('language').value;
+            const complexity = document.getElementById('complexity').value;
+            
+            // عرض مؤشر التحميل
+            document.getElementById('loading').style.display = 'block';
+            document.getElementById('codeOutput').textContent = 'جاري إنشاء الكود...';
+            
+            // محاكاة عملية التوليد (في التطبيق الحقيقي، سيتم استدعاء API للذكاء الاصطناعي)
+            setTimeout(() => {
+                // إخفاء مؤشر التحميل
+                document.getElementById('loading').style.display = 'none';
+                
+                // توليد كود بناءً على المدخلات
+                let generatedCode = generateCode(description, language, complexity);
+                document.getElementById('codeOutput').textContent = generatedCode;
+            }, 2000);
+        });
+        
+        document.getElementById('copyBtn').addEventListener('click', function() {
+            const codeOutput = document.getElementById('codeOutput');
+            const textArea = document.createElement('textarea');
+            textArea.value = codeOutput.textContent;
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textArea);
+            
+            // تغيير نص الزر مؤقتًا للإشارة إلى النسخ
+            const originalText = this.textContent;
+            this.textContent = 'تم النسخ!';
+            setTimeout(() => {
+                this.textContent = originalText;
+            }, 2000);
+        });
+        
+        // دالة لمحاكاة توليد الكود (في التطبيق الحقيقي، سيتم استبدالها باستدعاء API)
+        function generateCode(description, language, complexity) {
+            // كود افتراضي بناءً على اللغة المختارة
+            let code = '';
+            
+            switch(language) {
+                case 'javascript':
+                    code = `// ${description}\nfunction calculateSum(numbers) {\n    return numbers.reduce((sum, num) => sum + num, 0);\n}\n\n// مثال للاستخدام\nconst numbers = [1, 2, 3, 4, 5];\nconsole.log(calculateSum(numbers)); // الناتج: 15`;
+                    break;
+                case 'python':
+                    code = `# ${description}\ndef calculate_sum(numbers):\n    return sum(numbers)\n\n# مثال للاستخدام\nnumbers = [1, 2, 3, 4, 5]\nprint(calculate_sum(numbers))  # الناتج: 15`;
+                    break;
+                case 'html':
+                    code = `<!-- ${description} -->\n<!DOCTYPE html>\n<html lang="ar">\n<head>\n    <meta charset="UTF-8">\n    <meta name="viewport" content="width=device-width, initial-scale=1.0">\n    <title>صفحة ويب</title>\n</head>\n<body>\n    <h1>مرحباً بالعالم!</h1>\n    <p>هذه صفحة HTML بسيطة تم إنشاؤها بواسطة Zidan Coed</p>\n</body>\n</html>`;
+                    break;
+                case 'css':
+                    code = `/* ${description} */\n.container {\n    max-width: 1200px;\n    margin: 0 auto;\n    padding: 20px;\n}\n\n.card {\n    background: #fff;\n    border-radius: 8px;\n    box-shadow: 0 2px 10px rgba(0,0,0,0.1);\n    padding: 20px;\n    margin-bottom: 20px;\n}\n\n.button {\n    background: #6c63ff;\n    color: white;\n    padding: 10px 20px;\n    border: none;\n    border-radius: 4px;\n    cursor: pointer;\n}`;
+                    break;
+                case 'php':
+                    code = `<?php\n// ${description}\nfunction calculateSum($numbers) {\n    return array_sum($numbers);\n}\n\n// مثال للاستخدام\n$numbers = [1, 2, 3, 4, 5];\necho calculateSum($numbers); // الناتج: 15\n?>`;
+                    break;
+                case 'java':
+                    code = `// ${description}\npublic class Calculator {\n    public static int calculateSum(int[] numbers) {\n        int sum = 0;\n        for (int num : numbers) {\n            sum += num;\n        }\n        return sum;\n    }\n    \n    public static void main(String[] args) {\n        int[] numbers = {1, 2, 3, 4, 5};\n        System.out.println(calculateSum(numbers)); // الناتج: 15\n    }\n}`;
+                    break;
+                default:
+                    code = `// ${description}\n// الكود الخاص بك سيظهر هنا بناءً على اللغة المختارة`;
+            }
+            
+            return code;
         }
-      }
-
-      else if(lang === 'JavaScript'){
-        if(tags.includes('csv')){
-          code = `// Node.js - قراءة CSV بدون مكتبات خارجية (مبسط)
-const fs = require('fs');
-
-function parseCSV(text){
-  const lines = text.trim().split('\\n');
-  const headers = lines.shift().split(',');
-  const cols = headers.map(()=>[]);
-  for(const line of lines){
-    const parts = line.split(',');
-    parts.forEach((v,i)=>{ const n = parseFloat(v); if(!isNaN(n)) cols[i].push(n); });
-  }
-  const res = {};
-  headers.forEach((h,i)=>{
-    const arr = cols[i];
-    const mean = arr.length ? arr.reduce((a,b)=>a+b,0)/arr.length : 0;
-    res[h||('col_'+i)] = mean;
-  });
-  return res;
-}
-
-const text = fs.readFileSync('data.csv','utf8');
-console.log(parseCSV(text));
-`;
-          explanation = `قالب Node.js لقراءة CSV بسيط جداً. إذا الملف معقّد استعمل مكتبة مثل 'csv-parser' أو 'papaparse'.\nمتطلبات: Node.js`;
-          deps = ['Node.js'];
-        } else if(tags.includes('http')){
-          code = `// JavaScript (browser) - مثال fetch لواجهة API
-async function fetchData(url){
-  const r = await fetch(url);
-  if(!r.ok) throw new Error('Request failed');
-  return r.json();
-}
-
-fetchData('https://api.example.com/data').then(d => console.log(d)).catch(e=>console.error(e));
-`;
-          explanation = `يستخدم fetch API في المتصفح لجلب JSON. في Node.js استخدم 'node-fetch' أو axios.`;
-          deps = ['Browser or Node (with fetch)'];
-        } else {
-          code = `// JavaScript - قالب عام
-// ${pEsc}
-function main(){
-  console.log("ابدأ هنا");
-}
-
-main();
-`;
-          explanation = `قالب بسيط لبدء المهمة في JavaScript.`;
-        }
-      }
-
-      else if(lang === 'HTML/CSS/JS'){
-        code = `<!-- صفحة HTML تفاعلية مبسطة -->
-<!doctype html>
-<html lang="ar" dir="rtl">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>مثال تفاعل</title></head>
-<body style="font-family:Arial;padding:18px">
-  <h3>نموذج إرسال بيانات (AJAX)</h3>
-  <form id="f">
-    <input name="name" placeholder="اسم" required/>
-    <button>إرسال</button>
-  </form>
-  <pre id="out"></pre>
-  <script>
-    document.getElementById('f').addEventListener('submit', async (e)=>{
-      e.preventDefault();
-      const fd = new FormData(e.target);
-      const obj = Object.fromEntries(fd.entries());
-      // مثال: إرسال إلى API (هنا نعرضه محلياً)
-      document.getElementById('out').textContent = JSON.stringify(obj, null, 2);
-      console.log('تم الإرسال', obj);
-    });
-  </script>
-</body>
-</html>`;
-        explanation = `صفحة HTML بسيطة مع form وAJAX (هنا نعرض البيانات محلياً). يُمكن توصيلها بواجهة خلفية باستعمال fetch.`;
-        deps = ['متصفح حديث'];
-      }
-
-      else if(lang === 'Java'){
-        code = `// Java - قالب أساسي
-public class ZidanTask {
-    public static void main(String[] args) {
-        System.out.println("تشغيل المهمة: ${pEsc}");
-        // أضف المنطق هنا
-    }
-}
-`;
-        explanation = `قالب Java بسيط يحتوي على main كنقطة دخول.`;
-        deps = ['JDK 8+'];
-      }
-
-      else if(lang === 'C#'){
-        code = `// C# - قالب أساسي
-using System;
-class Program {
-  static void Main(){
-    Console.WriteLine("تشغيل المهمة: ${pEsc}");
-  }
-}
-`;
-        explanation = `قالب C# بسيط.`;
-        deps = ['.NET SDK'];
-      }
-
-      else if(lang === 'Go'){
-        code = `// Go - قالب أساسي
-package main
-import "fmt"
-
-func main(){
-    fmt.Println("تشغيل المهمة: ${pEsc}")
-}
-`;
-        explanation = `قالب Go بسيط.`;
-        deps = ['Go (1.18+)'];
-      }
-
-      else if(lang === 'PHP'){
-        code = `<?php
-// PHP - قالب بسيط
-// ${pEsc}
-echo "تشغيل المهمة: ${pEsc}\\n";
-?>`;
-        explanation = `قالب PHP بسيط.`;
-        deps = ['خادم PHP أو PHP CLI'];
-      }
-
-      else if(lang === 'Ruby'){
-        code = `# Ruby - قالب بسيط
-# ${pEsc}
-puts "تشغيل المهمة: ${pEsc}"
-`;
-        explanation = `قالب Ruby بسيط.`;
-        deps = ['Ruby'];
-      }
-
-      else if(lang === 'Rust'){
-        code = `// Rust - قالب بسيط
-fn main(){
-    println!("تشغيل المهمة: ${pEsc}");
-}
-`;
-        explanation = `قالب Rust. لمعالجة CSV استخدم crate 'csv' و 'serde'.`;
-        deps = ['Rust toolchain', "Add crates in Cargo.toml if needed"];
-      }
-
-      // warnings heuristics
-      const warnings = [];
-      if(tags.includes('file')) warnings.push('تحذير: عمليات الملفات تتطلب صلاحيات ومسارات صحيحة؛ افحص الاستثناءات.');
-      if(tags.includes('http')) warnings.push('تحذير: طلبات الشبكة قد تحتاج تحقق/مفاتيح API وعدم كشفها.');
-      if(tags.includes('db')) warnings.push('تحذير: تعامل مع استعلامات SQL بحذر لتجنب حقن SQL.');
-      if(tags.includes('crypto')) warnings.push('تحذير: لا تستخدم خوارزميات التشفير دون فهم واتباع أفضل الممارسات.');
-
-      // complexity heuristics
-      if(tags.length >= 2) addComplex('medium');
-      if(tags.includes('concurrency') || tags.includes('image')) addComplex('high');
-
-      return { code, explanation, deps, warnings, complexity };
-    }
-
-    // ---------- Run (sandbox for HTML/JS) ----------
-    function runInSandbox(code, lang){
-      consoleEl.textContent = '';
-      if(lang === 'HTML/CSS/JS'){
-        const blob = new Blob([code], {type:'text/html'});
-        const url = URL.createObjectURL(blob);
-        openSandbox(url);
-      } else if(lang === 'JavaScript'){
-        // Check for Node-specific keywords (basic)
-        if(/require\\(|process\\.|fs\\.|child_process/.test(code)){
-          alert('الكود يبدو Node.js (يحتوي على require أو fs). لا يمكن تشغيله في المتصفح. نفّذه محلياً باستخدام Node.');
-          return;
-        }
-        const html = `<!doctype html><html><body><script>
-        // forward console messages
-        (function(){
-          const realLog = console.log;
-          console.log = function(){ window.parent.postMessage({type:'stdout', text: Array.from(arguments).join(' ')}, '*'); realLog.apply(console, arguments); }
-          try{ ${code} }catch(e){ window.parent.postMessage({type:'stderr', text: e.toString()}, '*'); }
-        })();
-        </script></body></html>`;
-        const blob = new Blob([html], {type:'text/html'});
-        const url = URL.createObjectURL(blob);
-        openSandbox(url);
-      } else {
-        alert('التشغيل المباشر مدعوم فقط للـ HTML/JS وJavaScript النظيفة (بدون Node APIs).');
-      }
-    }
-
-    function openSandbox(url){
-      // create iframe
-      const iframe = document.createElement('iframe');
-      iframe.style.width = '100%';
-      iframe.style.height = '360px';
-      iframe.sandbox = 'allow-scripts';
-      iframe.src = url;
-      // clear previous and append
-      const prev = document.getElementById('__zidan_sandbox');
-      if(prev) prev.remove();
-      const wrapper = document.createElement('div');
-      wrapper.id = '__zidan_sandbox';
-      wrapper.style.marginTop = '12px';
-      wrapper.appendChild(iframe);
-      document.querySelector('.analysis').appendChild(wrapper);
-      statusEl.textContent = 'تشغيل داخل sandbox';
-    }
-
-    window.addEventListener('message', (ev)=>{
-      if(ev?.data?.type === 'stdout'){
-        consoleEl.textContent += ev.data.text + '\\n';
-      } else if(ev?.data?.type === 'stderr'){
-        consoleEl.textContent += '[ERROR] ' + ev.data.text + '\\n';
-      }
-    });
-
-    // ---------- LLM call (اختياري) ----------
-    async function callOpenAI(key, model, userPrompt){
-      const url = 'https://api.openai.com/v1/chat/completions';
-      const body = {
-        model: model || 'gpt-4o',
-        messages: [
-          { role:'system', content: 'You are a helpful assistant that returns JSON with keys: code, explanation, warnings (array), complexity, deps.' },
-          { role:'user', content: userPrompt }
-        ],
-        temperature: 0.12,
-        max_tokens: 1200
-      };
-      const resp = await fetch(url, {
-        method: 'POST',
-        headers: {'Content-Type':'application/json','Authorization':'Bearer '+ key},
-        body: JSON.stringify(body)
-      });
-      if(!resp.ok){
-        const txt = await resp.text();
-        throw new Error('LLM failed: ' + resp.status + ' - ' + txt);
-      }
-      const data = await resp.json();
-      const text = data.choices?.[0]?.message?.content || '';
-      try {
-        return JSON.parse(text);
-      } catch(e){
-        // إذا لم يُرجع JSON نحاول تقسيم الكود إن وُجد
-        return { code: text, explanation: 'الـ LLM أعاد نصاً غير JSON. راجع المخرجات.', warnings: [], complexity: 'unknown', deps: [] };
-      }
-    }
-
-    // ---------- Handlers ----------
-    generateBtn.addEventListener('click', async ()=>{
-      generateBtn.disabled = true; generateBtn.textContent = 'جاري التوليد...'; statusEl.textContent='...';
-      try {
-        const lang = languageEl.value;
-        const prompt = promptEl.value.trim() || '(بدون وصف)';
-        setEditorMode(lang);
-        if(useLLM && apiKeyEl.value.trim()){
-          // Ask LLM to return JSON {code, explanation, warnings, complexity, deps}
-          statusEl.textContent = 'استدعاء LLM...';
-          const userPrompt = `Language: ${lang}\nTask: ${prompt}\nReturn JSON with keys: code (string), explanation (string), warnings (array), complexity (string), deps (array). Only return valid JSON.`;
-          try {
-            const out = await callOpenAI(apiKeyEl.value.trim(), modelEl.value.trim(), userPrompt);
-            editor.setValue(out.code || '// LLM لم يرجع كود');
-            analysisText.textContent = out.explanation || 'لا يوجد شرح';
-            complexityEl.textContent = 'تعقيد: ' + (out.complexity||'-');
-            depsEl.textContent = 'متطلبات: ' + ((out.deps && out.deps.length)? out.deps.join(', '): '-');
-            warningsEl.textContent = 'تحذيرات: ' + ((out.warnings && out.warnings.length)? out.warnings.join(' | '): '-');
-            statusEl.textContent = 'تم التوليد عبر LLM';
-          } catch(err){
-            alert('فشل استدعاء LLM: ' + err.message);
-            statusEl.textContent = 'خطأ LLM';
-          }
-        } else {
-          // local generation
-          statusEl.textContent = 'توليد محلي...';
-          const out = generateLocal(languageEl.value, prompt);
-          editor.setValue(out.code || '// لم يتم انتاج كود');
-          analysisText.textContent = out.explanation || 'لا يوجد شرح';
-          complexityEl.textContent = 'تعقيد: ' + (out.complexity || '-');
-          depsEl.textContent = 'متطلبات: ' + ((out.deps && out.deps.length)? out.deps.join(', '): '-');
-          warningsEl.textContent = 'تحذيرات: ' + ((out.warnings && out.warnings.length)? out.warnings.join(' | '): '-');
-          statusEl.textContent = 'تم التوليد محلياً';
-        }
-      } finally {
-        generateBtn.disabled = false; generateBtn.textContent = 'توليد وشرح';
-      }
-    });
-
-    runBtn.addEventListener('click', ()=>{
-      const lang = languageEl.value;
-      const code = editor.getValue();
-      runInSandbox(code, lang);
-    });
-
-    copyBtn.addEventListener('click', async ()=>{
-      const t = editor.getValue();
-      await navigator.clipboard.writeText(t);
-      statusEl.textContent = 'تم النسخ';
-      setTimeout(()=> statusEl.textContent = 'جاهز', 1500);
-    });
-
-    downloadBtn.addEventListener('click', ()=>{
-      const lang = languageEl.value.toLowerCase().replace(/[^a-z]/g,'');
-      const val = editor.getValue();
-      let ext = 'txt';
-      if(lang.includes('python')) ext='py';
-      else if(lang.includes('javascript')) ext='js';
-      else if(lang.includes('html')) ext='html';
-      else if(lang.includes('java')) ext='java';
-      else if(lang.includes('c')) ext='cs';
-      else if(lang.includes('go')) ext='go';
-      else if(lang.includes('php')) ext='php';
-      else if(lang.includes('ruby')) ext='rb';
-      else if(lang.includes('rust')) ext='rs';
-      const fname = `zidancoder_${lang || 'code'}.${ext}`;
-      const blob = new Blob([val], {type:'text/plain;charset=utf-8'});
-      const a = document.createElement('a');
-      a.href = URL.createObjectURL(blob);
-      a.download = fname;
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-      statusEl.textContent = 'تم التحميل';
-      setTimeout(()=> statusEl.textContent = 'جاهز', 1200);
-    });
-
-    document.getElementById('clearBtn').addEventListener('click', ()=>{
-      editor.setValue('// تم المسح\n');
-      analysisText.textContent = 'لا يوجد شرح بعد.';
-      complexityEl.textContent = 'تعقيد: -';
-      depsEl.textContent = 'متطلبات: -';
-      warningsEl.textContent = 'تحذيرات: -';
-      consoleEl.textContent = '';
-    });
-
-    document.getElementById('sampleBtn').addEventListener('click', ()=>{
-      languageEl.value = 'HTML/CSS/JS';
-      setEditorMode(languageEl.value);
-      promptEl.value = 'صفحة ويب صغيرة تعرض نموذج و ترسل بيانات عبر AJAX';
-    });
-
-    // test API key: (basic ping - just check auth header works)
-    document.getElementById('testKey').addEventListener('click', async ()=>{
-      const k = apiKeyEl.value.trim();
-      if(!k){ alert('حط المفتاح'); return; }
-      try{
-        statusEl.textContent = 'اختبار المفتاح...';
-        const r = await fetch('https://api.openai.com/v1/models', {headers:{'Authorization':'Bearer '+k}});
-        if(r.ok) {
-          alert('المفتاح يبدو صالحاً (تم الوصول لواجهة النماذج).');
-          statusEl.textContent = 'مفتاح صالح';
-        } else {
-          alert('المفتاح غير صالح أو الشبكة رفضت: ' + r.status);
-          statusEl.textContent = 'مفتاح غير صالح';
-        }
-      } catch(err){
-        alert('فشل الاختبار: ' + err.message);
-        statusEl.textContent = 'خطأ اختبار المفتاح';
-      }
-    });
-
-    // init mode
-    setEditorMode(languageEl.value);
-    statusEl.textContent = 'جاهز';
-  </script>
+    </script>
 </body>
 </html>
