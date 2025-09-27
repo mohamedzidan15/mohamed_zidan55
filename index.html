@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zidan Coed - مولد الكود الذكي المتقدم</title>
+    <title>Zidan AI - الذكاء الاصطناعي المتكامل</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary: #6c63ff;
-            --primary-dark: #564fd8;
-            --secondary: #ff6584;
-            --accent: #00cec9;
+            --primary: #10a37f;
+            --primary-dark: #0d8a6d;
+            --secondary: #5436da;
+            --accent: #ff6b6b;
             --dark: #1a1a2e;
             --darker: #0f0f1a;
             --light: #f5f5f7;
+            --gray: #8e8ea0;
             --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
-            --gradient2: linear-gradient(135deg, var(--accent), var(--primary));
-            --glow: 0 0 20px rgba(108, 99, 255, 0.5);
+            --glow: 0 0 20px rgba(16, 163, 127, 0.3);
         }
         
         * {
@@ -32,18 +32,21 @@
             min-height: 100vh;
             overflow-x: hidden;
             background-image: 
-                radial-gradient(circle at 10% 20%, rgba(108, 99, 255, 0.1) 0%, transparent 20%),
-                radial-gradient(circle at 90% 80%, rgba(255, 101, 132, 0.1) 0%, transparent 20%);
+                radial-gradient(circle at 10% 20%, rgba(16, 163, 127, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(84, 54, 218, 0.1) 0%, transparent 20%);
         }
         
         .container {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
         
         header {
-            padding: 20px 0;
+            padding: 15px 0;
             position: relative;
             z-index: 10;
             background: rgba(26, 26, 46, 0.8);
@@ -64,31 +67,31 @@
         }
         
         .logo-icon {
-            width: 50px;
-            height: 50px;
+            width: 45px;
+            height: 45px;
             background: var(--gradient);
-            border-radius: 12px;
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 24px;
+            font-size: 20px;
             font-weight: bold;
             box-shadow: var(--glow);
         }
         
         .logo-text {
-            font-size: 28px;
+            font-size: 24px;
             font-weight: 800;
             background: var(--gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 10px rgba(108, 99, 255, 0.3);
+            text-shadow: 0 0 10px rgba(16, 163, 127, 0.3);
         }
         
         nav ul {
             display: flex;
             list-style: none;
-            gap: 30px;
+            gap: 25px;
         }
         
         nav a {
@@ -98,6 +101,7 @@
             transition: all 0.3s;
             position: relative;
             padding: 8px 0;
+            font-size: 15px;
         }
         
         nav a:hover {
@@ -119,270 +123,351 @@
             width: 100%;
         }
         
-        .hero {
-            padding: 100px 0 60px;
-            text-align: center;
-            position: relative;
-        }
-        
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at center, rgba(108, 99, 255, 0.05) 0%, transparent 70%);
-            z-index: -1;
-        }
-        
-        .hero h1 {
-            font-size: 52px;
-            margin-bottom: 20px;
-            background: linear-gradient(to right, #fff, var(--primary), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            line-height: 1.2;
-        }
-        
-        .hero p {
-            font-size: 20px;
-            max-width: 800px;
-            margin: 0 auto 40px;
-            color: #ccc;
-            line-height: 1.6;
-        }
-        
-        .ai-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: rgba(108, 99, 255, 0.1);
-            padding: 8px 20px;
-            border-radius: 50px;
-            border: 1px solid rgba(108, 99, 255, 0.3);
-            margin-bottom: 30px;
-            backdrop-filter: blur(10px);
-        }
-        
-        .ai-badge i {
-            color: var(--primary);
-            animation: pulse 2s infinite;
-        }
-        
-        .main-app {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(15px);
-            border-radius: 20px;
-            padding: 40px;
-            margin: 40px 0;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .main-app::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: var(--gradient);
-        }
-        
-        .input-section {
-            margin-bottom: 30px;
-        }
-        
-        .input-section label {
-            display: block;
-            margin-bottom: 15px;
-            font-weight: 500;
-            font-size: 18px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .input-section label i {
-            color: var(--accent);
-        }
-        
-        .code-input {
-            width: 100%;
-            min-height: 150px;
-            background: rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            padding: 20px;
-            color: var(--light);
-            font-size: 16px;
-            resize: vertical;
-            transition: all 0.3s;
-            line-height: 1.5;
-        }
-        
-        .code-input:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 2px rgba(108, 99, 255, 0.2);
-        }
-        
-        .options-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-bottom: 25px;
-        }
-        
-        .option {
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .option label {
-            margin-bottom: 8px;
-            font-weight: 500;
+        .ai-status {
             display: flex;
             align-items: center;
             gap: 8px;
-        }
-        
-        .option label i {
-            color: var(--accent);
+            background: rgba(16, 163, 127, 0.1);
+            padding: 6px 15px;
+            border-radius: 50px;
+            border: 1px solid rgba(16, 163, 127, 0.3);
             font-size: 14px;
         }
         
-        .option select, .option input {
-            padding: 12px 15px;
-            background: rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            color: var(--light);
-            font-size: 16px;
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #10d67a;
+            animation: pulse 2s infinite;
         }
         
-        .option select:focus, .option input:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 2px rgba(108, 99, 255, 0.2);
+        .chat-container {
+            display: flex;
+            flex: 1;
+            gap: 20px;
+            padding: 20px 0;
+            height: calc(100vh - 80px);
         }
         
-        .advanced-options {
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 10px;
+        .sidebar {
+            width: 280px;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(15px);
+            border-radius: 15px;
             padding: 20px;
-            margin-top: 20px;
-            border-left: 3px solid var(--accent);
-        }
-        
-        .advanced-header {
+            border: 1px solid rgba(255, 255, 255, 0.05);
             display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 15px;
-            cursor: pointer;
+            flex-direction: column;
+            overflow: hidden;
         }
         
-        .advanced-header h3 {
-            font-size: 16px;
-            color: var(--accent);
-        }
-        
-        .advanced-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-        }
-        
-        .checkbox-option {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .checkbox-option input {
-            width: 18px;
-            height: 18px;
-        }
-        
-        .generate-btn {
+        .new-chat-btn {
             background: var(--gradient);
             color: white;
             border: none;
-            padding: 16px 30px;
+            padding: 12px;
             border-radius: 10px;
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s;
             display: flex;
             align-items: center;
             justify-content: center;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .new-chat-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(16, 163, 127, 0.4);
+        }
+        
+        .chat-history {
+            flex: 1;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+        
+        .chat-history-title {
+            font-size: 14px;
+            color: var(--gray);
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .chat-item {
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
             gap: 10px;
-            width: 100%;
-            margin-top: 25px;
-            box-shadow: 0 10px 20px rgba(108, 99, 255, 0.3);
-            position: relative;
+            color: var(--gray);
+        }
+        
+        .chat-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--light);
+        }
+        
+        .chat-item.active {
+            background: rgba(16, 163, 127, 0.1);
+            color: var(--light);
+        }
+        
+        .chat-item i {
+            font-size: 16px;
+        }
+        
+        .main-chat {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(15px);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
             overflow: hidden;
         }
         
-        .generate-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: 0.5s;
+        .chat-header {
+            padding: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            gap: 15px;
         }
         
-        .generate-btn:hover::before {
-            left: 100%;
+        .chat-avatar {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
         }
         
-        .generate-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 30px rgba(108, 99, 255, 0.4);
+        .chat-title {
+            font-size: 18px;
+            font-weight: 600;
         }
         
-        .generate-btn:active {
-            transform: translateY(0);
+        .chat-messages {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
         }
         
-        .loading {
+        .message {
+            max-width: 85%;
+            padding: 15px 20px;
+            border-radius: 18px;
+            line-height: 1.5;
+            position: relative;
+            animation: fadeIn 0.3s ease-out;
+        }
+        
+        .user-message {
+            align-self: flex-end;
+            background: var(--primary);
+            border-bottom-right-radius: 5px;
+            color: white;
+        }
+        
+        .ai-message {
+            align-self: flex-start;
+            background: rgba(255, 255, 255, 0.1);
+            border-bottom-left-radius: 5px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .message-content {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        
+        .message-time {
+            font-size: 11px;
+            opacity: 0.7;
+            margin-top: 5px;
+            text-align: right;
+        }
+        
+        .ai-message .message-time {
+            text-align: left;
+        }
+        
+        .chat-input-container {
+            padding: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .chat-input-wrapper {
+            display: flex;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        .chat-input-wrapper:focus-within {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(16, 163, 127, 0.2);
+        }
+        
+        .chat-input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            padding: 15px 20px;
+            color: var(--light);
+            font-size: 16px;
+            resize: none;
+            max-height: 120px;
+            min-height: 60px;
+            outline: none;
+        }
+        
+        .send-btn {
+            background: transparent;
+            border: none;
+            color: var(--gray);
+            padding: 0 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .send-btn:hover {
+            color: var(--primary);
+        }
+        
+        .send-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        .thinking-indicator {
             display: none;
-            text-align: center;
-            margin: 30px 0;
+            padding: 15px 20px;
+            align-items: center;
+            gap: 10px;
+            color: var(--gray);
+            font-size: 14px;
+        }
+        
+        .thinking-dots {
+            display: flex;
+            gap: 4px;
+        }
+        
+        .thinking-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--gray);
+            animation: bounce 1.4s infinite ease-in-out;
+        }
+        
+        .thinking-dot:nth-child(1) {
+            animation-delay: -0.32s;
+        }
+        
+        .thinking-dot:nth-child(2) {
+            animation-delay: -0.16s;
+        }
+        
+        .suggestions {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .suggestion {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 14px;
+            text-align: right;
+        }
+        
+        .suggestion:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        .empty-chat {
+            flex: 1;
+            display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px;
+            color: var(--gray);
         }
         
-        .loading-dots {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 15px;
+        .empty-chat-icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+            opacity: 0.5;
         }
         
-        .dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
+        .empty-chat h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: var(--light);
+        }
+        
+        .empty-chat p {
+            font-size: 16px;
+            max-width: 600px;
+            line-height: 1.6;
+        }
+        
+        .code-block {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            overflow-x: auto;
+            border-left: 3px solid var(--primary);
+        }
+        
+        .typing-cursor {
+            display: inline-block;
+            width: 8px;
+            height: 16px;
             background: var(--primary);
-            animation: bounce 1.5s infinite ease-in-out;
+            margin-left: 2px;
+            animation: blink 1s infinite;
+            vertical-align: middle;
         }
         
-        .dot:nth-child(2) {
-            animation-delay: 0.2s;
-            background: var(--accent);
-        }
-        
-        .dot:nth-child(3) {
-            animation-delay: 0.4s;
-            background: var(--secondary);
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
         @keyframes bounce {
@@ -394,268 +479,20 @@
             }
         }
         
-        .output-section {
-            margin-top: 40px;
-        }
-        
-        .output-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .output-actions {
-            display: flex;
-            gap: 10px;
-        }
-        
-        .action-btn {
-            background: rgba(255, 255, 255, 0.1);
-            color: var(--light);
-            border: none;
-            padding: 8px 15px;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: background 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            font-size: 14px;
-        }
-        
-        .action-btn:hover {
-            background: rgba(255, 255, 255, 0.2);
-        }
-        
-        .action-btn.primary {
-            background: var(--primary);
-        }
-        
-        .action-btn.primary:hover {
-            background: var(--primary-dark);
-        }
-        
-        .code-output {
-            background: #1e1e3f;
-            border-radius: 10px;
-            padding: 0;
-            min-height: 300px;
-            overflow: auto;
-            font-family: 'Courier New', monospace;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            position: relative;
-        }
-        
-        .code-header {
-            background: #2d2d5a;
-            padding: 10px 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-radius: 10px 10px 0 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .code-lang {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-weight: 500;
-        }
-        
-        .code-content {
-            padding: 20px;
-            white-space: pre-wrap;
-            line-height: 1.5;
-            font-size: 15px;
-        }
-        
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin: 80px 0;
-        }
-        
-        .feature-card {
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 15px;
-            padding: 30px;
-            text-align: center;
-            transition: all 0.3s;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: var(--gradient);
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-            border-color: rgba(108, 99, 255, 0.2);
-        }
-        
-        .feature-icon {
-            width: 70px;
-            height: 70px;
-            background: var(--gradient2);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            font-size: 30px;
-            box-shadow: var(--glow);
-        }
-        
-        .feature-card h3 {
-            margin-bottom: 15px;
-            font-size: 22px;
-            color: var(--light);
-        }
-        
-        .feature-card p {
-            color: #ccc;
-            line-height: 1.6;
-        }
-        
-        footer {
-            text-align: center;
-            padding: 40px 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            margin-top: 60px;
-            color: #aaa;
-            background: rgba(15, 15, 26, 0.8);
-            backdrop-filter: blur(10px);
-        }
-        
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 15px;
-        }
-        
-        .social-links a {
-            color: #aaa;
-            font-size: 20px;
-            transition: color 0.3s;
-        }
-        
-        .social-links a:hover {
-            color: var(--primary);
-        }
-        
-        /* تأثيرات إضافية */
-        .floating {
-            animation: float 6s ease-in-out infinite;
-        }
-        
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-            100% { transform: translateY(0px); }
-        }
-        
         @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
         }
         
-        .typewriter {
-            overflow: hidden;
-            border-right: 2px solid var(--primary);
-            white-space: nowrap;
-            margin: 0 auto;
-            animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
         }
         
-        @keyframes typing {
-            from { width: 0 }
-            to { width: 100% }
-        }
-        
-        @keyframes blink-caret {
-            from, to { border-color: transparent }
-            50% { border-color: var(--primary) }
-        }
-        
-        /* تصميم متجاوب */
-        @media (max-width: 968px) {
-            .header-content {
-                flex-direction: column;
-                gap: 20px;
-            }
-            
-            nav ul {
-                gap: 15px;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            
-            .hero h1 {
-                font-size: 40px;
-            }
-            
-            .hero p {
-                font-size: 18px;
-            }
-            
-            .options-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .main-app {
-                padding: 30px 20px;
-            }
-            
-            .footer-content {
-                flex-direction: column;
-                text-align: center;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 32px;
-            }
-            
-            .hero p {
-                font-size: 16px;
-            }
-            
-            .feature-card {
-                padding: 20px;
-            }
-            
-            .output-actions {
-                flex-wrap: wrap;
-            }
-        }
-        
-        /* تخصيص شريط التمرير */
+        /* Scrollbar */
         ::-webkit-scrollbar {
-            width: 8px;
+            width: 6px;
         }
         
         ::-webkit-scrollbar-track {
@@ -664,903 +501,400 @@
         
         ::-webkit-scrollbar-thumb {
             background: var(--primary);
-            border-radius: 4px;
+            border-radius: 3px;
         }
         
         ::-webkit-scrollbar-thumb:hover {
             background: var(--primary-dark);
         }
+        
+        /* Responsive */
+        @media (max-width: 968px) {
+            .sidebar {
+                display: none;
+            }
+            
+            .chat-container {
+                gap: 0;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            nav ul {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .suggestions {
+                grid-template-columns: 1fr;
+            }
+            
+            .message {
+                max-width: 95%;
+            }
+        }
     </style>
 </head>
 <body>
-    <header>
-        <div class="container">
+    <div class="container">
+        <header>
             <div class="header-content">
                 <div class="logo">
-                    <div class="logo-icon">ZC</div>
-                    <div class="logo-text">Zidan Coed</div>
+                    <div class="logo-icon">Z</div>
+                    <div class="logo-text">Zidan AI</div>
                 </div>
                 <nav>
                     <ul>
                         <li><a href="#"><i class="fas fa-home"></i> الرئيسية</a></li>
-                        <li><a href="#"><i class="fas fa-star"></i> المميزات</a></li>
-                        <li><a href="#"><i class="fas fa-book"></i> التوثيق</a></li>
-                        <li><a href="#"><i class="fas fa-headset"></i> الدعم</a></li>
+                        <li><a href="#"><i class="fas fa-comments"></i> المحادثات</a></li>
+                        <li><a href="#"><i class="fas fa-cogs"></i> الإعدادات</a></li>
+                        <li><a href="#"><i class="fas fa-question-circle"></i> المساعدة</a></li>
                     </ul>
                 </nav>
-            </div>
-        </div>
-    </header>
-    
-    <section class="hero">
-        <div class="container">
-            <div class="ai-badge">
-                <i class="fas fa-robot"></i>
-                <span>مدعوم بالذكاء الاصطناعي المتقدم</span>
-            </div>
-            <h1>Zidan Coed - مستقبل برمجة الذكاء الاصطناعي</h1>
-            <p>أقوى أداة ذكية تستخدم أحدث تقنيات الذكاء الاصطناعي لتحويل أوصافك النصية إلى كود برمجي متكامل ومحسّن. فقط اشرح ما تريد، ودع Zidan Coed يهتم بالباقي!</p>
-        </div>
-    </section>
-    
-    <div class="container">
-        <div class="main-app">
-            <div class="input-section">
-                <label for="codeDescription"><i class="fas fa-pencil-alt"></i> اشرح الكود الذي تريد إنشاءه بالتفصيل:</label>
-                <textarea id="codeDescription" class="code-input" placeholder="مثال: أريد دالة في JavaScript تقبل مصفوفة من الأرقام وتعيد مجموعها مع التحقق من صحة المدخلات ومعالجة الأخطاء...">أريد دالة في JavaScript تقبل مصفوفة من الأرقام وتعيد مجموعها مع التحقق من صحة المدخلات ومعالجة الأخطاء</textarea>
-                
-                <div class="options-grid">
-                    <div class="option">
-                        <label for="language"><i class="fas fa-code"></i> لغة البرمجة:</label>
-                        <select id="language">
-                            <option value="javascript">JavaScript</option>
-                            <option value="python">Python</option>
-                            <option value="html">HTML + CSS + JS</option>
-                            <option value="react">React Component</option>
-                            <option value="node">Node.js</option>
-                            <option value="php">PHP</option>
-                            <option value="java">Java</option>
-                            <option value="cpp">C++</option>
-                        </select>
-                    </div>
-                    
-                    <div class="option">
-                        <label for="complexity"><i class="fas fa-cogs"></i> مستوى التعقيد:</label>
-                        <select id="complexity">
-                            <option value="simple">بسيط</option>
-                            <option value="medium">متوسط</option>
-                            <option value="complex" selected>معقد</option>
-                            <option value="expert">خبير</option>
-                        </select>
-                    </div>
-                    
-                    <div class="option">
-                        <label for="style"><i class="fas fa-palette"></i> نمط الكود:</label>
-                        <select id="style">
-                            <option value="standard">قياسي</option>
-                            <option value="functional">وظيفي</option>
-                            <option value="oop">كائني التوجه</option>
-                            <option value="minimal">مبسط</option>
-                        </select>
-                    </div>
-                    
-                    <div class="option">
-                        <label for="framework"><i class="fas fa-cube"></i> الإطار:</label>
-                        <select id="framework">
-                            <option value="vanilla">فانيلا (بدون إطار)</option>
-                            <option value="jquery">jQuery</option>
-                            <option value="vue">Vue.js</option>
-                            <option value="angular">Angular</option>
-                            <option value="express">Express.js</option>
-                            <option value="django">Django</option>
-                        </select>
-                    </div>
+                <div class="ai-status">
+                    <div class="status-dot"></div>
+                    <span>Zidan AI نشط</span>
                 </div>
-                
-                <div class="advanced-options">
-                    <div class="advanced-header">
-                        <i class="fas fa-sliders-h"></i>
-                        <h3>خيارات متقدمة</h3>
-                    </div>
-                    <div class="advanced-content">
-                        <div class="checkbox-option">
-                            <input type="checkbox" id="optimize" checked>
-                            <label for="optimize">تحسين الأداء</label>
-                        </div>
-                        <div class="checkbox-option">
-                            <input type="checkbox" id="comments" checked>
-                            <label for="comments">إضافة تعليقات توضيحية</label>
-                        </div>
-                        <div class="checkbox-option">
-                            <input type="checkbox" id="errorHandling" checked>
-                            <label for="errorHandling">معالجة الأخطاء</label>
-                        </div>
-                        <div class="checkbox-option">
-                            <input type="checkbox" id="tests">
-                            <label for="tests">إنشاء اختبارات تلقائية</label>
-                        </div>
-                    </div>
-                </div>
-                
-                <button id="generateBtn" class="generate-btn">
-                    <i class="fas fa-bolt"></i>
-                    توليد الكود المتقدم
+            </div>
+        </header>
+        
+        <div class="chat-container">
+            <div class="sidebar">
+                <button class="new-chat-btn" id="newChatBtn">
+                    <i class="fas fa-plus"></i> محادثة جديدة
                 </button>
                 
-                <div id="loading" class="loading">
-                    <div class="loading-dots">
-                        <div class="dot"></div>
-                        <div class="dot"></div>
-                        <div class="dot"></div>
+                <div class="chat-history">
+                    <div class="chat-history-title">المحادثات السابقة</div>
+                    <div class="chat-item active">
+                        <i class="fas fa-message"></i>
+                        <span>مناقشة حول البرمجة</span>
                     </div>
-                    <p>Zidan Coed يقوم بتحليل طلبك وإنشاء كود متقدم...</p>
+                    <div class="chat-item">
+                        <i class="fas fa-message"></i>
+                        <span>أسئلة حول الذكاء الاصطناعي</span>
+                    </div>
+                    <div class="chat-item">
+                        <i class="fas fa-message"></i>
+                        <span>مساعد في كتابة الكود</span>
+                    </div>
+                    <div class="chat-item">
+                        <i class="fas fa-message"></i>
+                        <span>شرح خوارزميات التعلم الآلي</span>
+                    </div>
                 </div>
             </div>
             
-            <div class="output-section">
-                <div class="output-header">
-                    <h2><i class="fas fa-code"></i> الكود المُنشأ:</h2>
-                    <div class="output-actions">
-                        <button id="copyBtn" class="action-btn primary">
-                            <i class="fas fa-copy"></i> نسخ الكود
-                        </button>
-                        <button id="downloadBtn" class="action-btn">
-                            <i class="fas fa-download"></i> تحميل
-                        </button>
-                        <button id="formatBtn" class="action-btn">
-                            <i class="fas fa-indent"></i> تنسيق
-                        </button>
+            <div class="main-chat">
+                <div class="chat-header">
+                    <div class="chat-avatar">
+                        <i class="fas fa-robot"></i>
                     </div>
+                    <div class="chat-title">Zidan AI</div>
                 </div>
-                <div class="code-output">
-                    <div class="code-header">
-                        <div class="code-lang">
-                            <i class="fab fa-js-square"></i>
-                            <span id="currentLang">JavaScript</span>
+                
+                <div class="chat-messages" id="chatMessages">
+                    <div class="empty-chat" id="emptyChat">
+                        <div class="empty-chat-icon">
+                            <i class="fas fa-robot"></i>
                         </div>
-                        <div class="code-size">~ <span id="codeSize">0</span> حرف</div>
+                        <h2>مرحباً! أنا Zidan AI</h2>
+                        <p>كيف يمكنني مساعدتك اليوم؟ أسألني عن أي شيء متعلق بالبرمجة، الذكاء الاصطناعي، أو أي موضوع آخر.</p>
+                        
+                        <div class="suggestions">
+                            <div class="suggestion" data-prompt="اشرح لي مفهوم الذكاء الاصطناعي بكلمات بسيطة">
+                                اشرح لي مفهوم الذكاء الاصطناعي بكلمات بسيطة
+                            </div>
+                            <div class="suggestion" data-prompt="كيف يمكنني إنشاء موقع ويب تفاعلي باستخدام JavaScript؟">
+                                كيف يمكنني إنشاء موقع ويب تفاعلي باستخدام JavaScript؟
+                            </div>
+                            <div class="suggestion" data-prompt="ما هي أفضل طريقة لتعلم البرمجة للمبتدئين؟">
+                                ما هي أفضل طريقة لتعلم البرمجة للمبتدئين؟
+                            </div>
+                            <div class="suggestion" data-prompt="اكتب لي كود Python لحل مشكلة حسابية معقدة">
+                                اكتب لي كود Python لحل مشكلة حسابية معقدة
+                            </div>
+                        </div>
                     </div>
-                    <pre id="codeContent" class="code-content">سيظهر الكود المتقدم هنا...</pre>
                 </div>
-            </div>
-        </div>
-        
-        <div class="features">
-            <div class="feature-card floating">
-                <div class="feature-icon"><i class="fas fa-brain"></i></div>
-                <h3>ذكاء اصطناعي متقدم</h3>
-                <p>يعتمد على أحدث نماذج الذكاء الاصطناعي لفهم النصوص المعقدة وتحويلها إلى كود فعال ومحسّن</p>
-            </div>
-            
-            <div class="feature-card floating" style="animation-delay: 0.5s;">
-                <div class="feature-icon"><i class="fas fa-bolt"></i></div>
-                <h3>أداء فائق السرعة</h3>
-                <p>يولد كودًا عالي الجودة في ثوانٍ معدودة مع تحسينات أداء مدمجة تلقائيًا</p>
-            </div>
-            
-            <div class="feature-card floating" style="animation-delay: 1s;">
-                <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
-                <h3>كود آمن ومحمي</h3>
-                <p>يتضمن أفضل ممارسات الأمان ويتجنب الثغرات الشائعة تلقائيًا</p>
+                
+                <div class="thinking-indicator" id="thinkingIndicator">
+                    <div class="thinking-dots">
+                        <div class="thinking-dot"></div>
+                        <div class="thinking-dot"></div>
+                        <div class="thinking-dot"></div>
+                    </div>
+                    <span>Zidan AI يفكر...</span>
+                </div>
+                
+                <div class="chat-input-container">
+                    <div class="chat-input-wrapper">
+                        <textarea class="chat-input" id="chatInput" placeholder="اكتب رسالتك هنا... (اضغط Enter للإرسال)" rows="1"></textarea>
+                        <button class="send-btn" id="sendBtn">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="logo">
-                    <div class="logo-text">Zidan Coed</div>
-                </div>
-                <p>أقوى أداة ذكية لتوليد الكود باستخدام الذكاء الاصطناعي &copy; 2023</p>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-github"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
-                </div>
-            </div>
-        </div>
-    </footer>
 
     <script>
         // عناصر DOM
-        const generateBtn = document.getElementById('generateBtn');
-        const copyBtn = document.getElementById('copyBtn');
-        const downloadBtn = document.getElementById('downloadBtn');
-        const formatBtn = document.getElementById('formatBtn');
-        const codeDescription = document.getElementById('codeDescription');
-        const languageSelect = document.getElementById('language');
-        const complexitySelect = document.getElementById('complexity');
-        const styleSelect = document.getElementById('style');
-        const frameworkSelect = document.getElementById('framework');
-        const codeContent = document.getElementById('codeContent');
-        const currentLang = document.getElementById('currentLang');
-        const codeSize = document.getElementById('codeSize');
-        const loading = document.getElementById('loading');
+        const chatMessages = document.getElementById('chatMessages');
+        const chatInput = document.getElementById('chatInput');
+        const sendBtn = document.getElementById('sendBtn');
+        const newChatBtn = document.getElementById('newChatBtn');
+        const thinkingIndicator = document.getElementById('thinkingIndicator');
+        const emptyChat = document.getElementById('emptyChat');
         
-        // مكتبة الأكواد المتقدمة
-        const codeTemplates = {
-            javascript: {
-                simple: `// دالة بسيطة لجمع الأرقام
-function sumArray(numbers) {
-    return numbers.reduce((total, num) => total + num, 0);
-}`,
-                medium: `// دالة متوسطة التعقيد مع تحقق بسيط
-function sumArray(numbers) {
-    if (!Array.isArray(numbers)) {
-        throw new Error('المدخل يجب أن يكون مصفوفة');
-    }
-    
-    return numbers.reduce((total, num) => {
-        if (typeof num !== 'number') {
-            throw new Error('جميع العناصر يجب أن تكون أرقامًا');
-        }
-        return total + num;
-    }, 0);
-}`,
-                complex: `/**
- * دالة متقدمة لجمع قيم مصفوفة الأرقام مع معالجة متكاملة للأخطاء
- * @param {Array} numbers - مصفوفة الأرقام المراد جمعها
- * @returns {number} - مجموع الأرقام
- * @throws {Error} - في حالة وجود مدخل غير صالح
- */
-function sumArray(numbers) {
-    // التحقق من نوع المدخل
-    if (!Array.isArray(numbers)) {
-        throw new Error('المدخل يجب أن يكون مصفوفة');
-    }
-    
-    // التحقق من أن المصفوفة غير فارغة
-    if (numbers.length === 0) {
-        console.warn('تم تمرير مصفوفة فارغة، سيتم إرجاع 0');
-        return 0;
-    }
-    
-    // استخدام reduce مع معالجة الأخطاء
-    try {
-        const sum = numbers.reduce((accumulator, currentValue, index) => {
-            // التحقق من أن العنصر رقم
-            if (typeof currentValue !== 'number' || isNaN(currentValue)) {
-                throw new Error(\`العنصر في الموضع \${index} ليس رقمًا صالحًا: \${currentValue}\`);
-            }
+        // قاعدة معارف Zidan AI
+        const aiKnowledgeBase = {
+            greetings: [
+                "مرحباً! كيف يمكنني مساعدتك اليوم؟",
+                "أهلاً وسهلاً! أنا Zidan AI، جاهز للإجابة على أسئلتك.",
+                "مرحباً بك! أنا هنا لمساعدتك في أي استفسار لديك."
+            ],
             
-            // التحقق من تجاوز الحدود العددية
-            if (accumulator + currentValue > Number.MAX_SAFE_INTEGER) {
-                throw new Error('تجمع الأرقام يتجاوز الحد الأقصى الآمن');
-            }
-            
-            return accumulator + currentValue;
-        }, 0);
-        
-        return sum;
-    } catch (error) {
-        console.error('حدث خطأ أثناء عملية الجمع:', error.message);
-        throw error;
-    }
-}
-
-// مثال للاستخدام مع حالات اختبار مختلفة
-try {
-    console.log(sumArray([1, 2, 3, 4, 5])); // 15
-    console.log(sumArray([])); // 0 مع تحذير
-    console.log(sumArray([10, 20, 30])); // 60
-} catch (error) {
-    console.error('فشل التنفيذ:', error.message);
-}`,
-                expert: `/**
- * نظام متقدم لإدارة وجمع القيم العددية مع تحسينات أداء متعددة
- * @class AdvancedArraySum
- */
-class AdvancedArraySum {
-    constructor() {
-        this.cache = new Map();
-        this.stats = {
-            totalCalculations: 0,
-            cacheHits: 0,
-            errors: 0
-        };
-    }
-    
-    /**
-     * حساب مجموع مصفوفة مع التخزين المؤقت للنتائج
-     * @param {Array} numbers - مصفوفة الأرقام
-     * @param {Object} options - خيارات إضافية
-     * @returns {number} - المجموع
-     */
-    calculate(numbers, options = {}) {
-        const { useCache = true, validateInput = true } = options;
-        
-        // إنشاء مفتاح فريد للتخزين المؤقت
-        const cacheKey = useCache ? this.generateCacheKey(numbers) : null;
-        
-        // محاولة استرجاع النتيجة من الذاكرة المؤقتة
-        if (useCache && cacheKey && this.cache.has(cacheKey)) {
-            this.stats.cacheHits++;
-            return this.cache.get(cacheKey);
-        }
-        
-        this.stats.totalCalculations++;
-        
-        try {
-            // التحقق المتقدم من المدخلات
-            if (validateInput) {
-                this.validateInput(numbers);
-            }
-            
-            // خوارزمية جمع محسنة للأداء
-            const sum = this.optimizedSum(numbers);
-            
-            // التخزين في الذاكرة المؤقتة
-            if (useCache && cacheKey) {
-                this.cache.set(cacheKey, sum);
-            }
-            
-            return sum;
-        } catch (error) {
-            this.stats.errors++;
-            console.error('فشل في حساب المجموع:', error.message);
-            throw error;
-        }
-    }
-    
-    /**
-     * تحقق متقدم من صحة المدخلات
-     * @param {Array} numbers - المصفوفة للتحقق
-     * @private
-     */
-    validateInput(numbers) {
-        if (!Array.isArray(numbers)) {
-            throw new TypeError('المدخل يجب أن يكون مصفوفة');
-        }
-        
-        if (numbers.length === 0) {
-            return; // المصفوفة الفارغة مسموحة
-        }
-        
-        // التحقق من كل عنصر
-        numbers.forEach((num, index) => {
-            if (typeof num !== 'number' || !Number.isFinite(num)) {
-                throw new TypeError(\`العنصر في الموضع \${index} ليس رقمًا صالحًا: \${num}\`);
-            }
-        });
-        
-        // التحقق من تجاوز الحد الأقصى للمصفوفة
-        if (numbers.length > 1000000) {
-            console.warn('المصفوفة كبيرة جدًا، قد يؤثر على الأداء');
-        }
-    }
-    
-    /**
-     * خوارزمية جمع محسنة
-     * @param {Array} numbers - مصفوفة الأرقام
-     * @returns {number} - المجموع
-     * @private
-     */
-    optimizedSum(numbers) {
-        // استخدام تقنية loop unrolling للأداء
-        let sum = 0;
-        const length = numbers.length;
-        let i = 0;
-        
-        // معالجة 4 عناصر في كل iteration لتحسين الأداء
-        for (; i < length - 3; i += 4) {
-            sum += numbers[i] + numbers[i + 1] + numbers[i + 2] + numbers[i + 3];
-        }
-        
-        // معالجة العناصر المتبقية
-        for (; i < length; i++) {
-            sum += numbers[i];
-        }
-        
-        return sum;
-    }
-    
-    /**
-     * توليد مفتاح فريد للتخزين المؤقت
-     * @param {Array} numbers - المصفوفة
-     * @returns {string} - المفتاح
-     * @private
-     */
-    generateCacheKey(numbers) {
-        return numbers.join(',');
-    }
-    
-    /**
-     * الحصول على إحصائيات الاستخدام
-     * @returns {Object} - الإحصائيات
-     */
-    getStats() {
-        return { ...this.stats };
-    }
-    
-    /**
-     * مسح الذاكرة المؤقتة
-     */
-    clearCache() {
-        this.cache.clear();
-    }
-}
-
-// مثال للاستخدام
-const arraySum = new AdvancedArraySum();
-
-// اختبار الأداء مع حالات مختلفة
-const testArrays = [
-    [1, 2, 3, 4, 5],
-    [10, 20, 30, 40, 50],
-    Array.from({ length: 1000 }, (_, i) => i + 1) // مصفوفة كبيرة
-];
-
-testArrays.forEach((arr, idx) => {
-    try {
-        console.log(\`المجموع \${idx + 1}:\`, arraySum.calculate(arr));
-    } catch (error) {
-        console.error(\`خطأ في المصفوفة \${idx + 1}:\`, error.message);
-    }
-});
-
-// عرض الإحصائيات
-console.log('إحصائيات الأداء:', arraySum.getStats());`
+            programming: {
+                "javascript": "جافاسكريبت هي لغة برمجة عالية المستوى تستخدم principalmente لتطوير الويب. هي لغة مفسرة، كائنية التوجه، وتدريب البرمجة الوظيفية.\n\nمثال على دالة بسيطة:\n```javascript\nfunction greet(name) {\n    return `مرحباً ${name}!`;\n}\n\nconsole.log(greet('زيدان')); // مرحباً زيدان!\n```",
+                
+                "python": "بايثون هي لغة برمجة عالية المستوى، سهلة التعلم وقوية. تستخدم في مجالات متعددة مثل تطوير الويب، تحليل البيانات، الذكاء الاصطناعي.\n\nمثال على دالة بسيطة:\n```python\ndef greet(name):\n    return f'مرحباً {name}!'\n\nprint(greet('زيدان'))  # مرحباً زيدان!\n```",
+                
+                "html": "HTML هي لغة ترميز تستخدم لإنشاء هيكل صفحات الويب. تعمل مع CSS وJavaScript لإنشاء مواقع ويب كاملة.\n\nمثال على هيكل أساسي:\n```html\n<!DOCTYPE html>\n<html>\n<head>\n    <title>صفحتي</title>\n</head>\n<body>\n    <h1>مرحباً بالعالم!</h1>\n</body>\n</html>\n```"
             },
-            python: {
-                complex: `"""
-دالة متقدمة لجمع قيم مصفوفة الأرقام مع معالجة متكاملة للأخطاء
-"""
-from typing import List, Union
-import numbers
-
-def sum_array(numbers: List[Union[int, float]]) -> float:
-    """
-    حساب مجموع مصفوفة الأرقام مع التحقق من الصحة ومعالجة الأخطاء
-    
-    Args:
-        numbers (List[Union[int, float]]): مصفوفة الأرقام المراد جمعها
-        
-    Returns:
-        float: مجموع الأرقام
-        
-    Raises:
-        TypeError: إذا كان المدخل ليس قائمة
-        ValueError: إذا كانت القائمة تحتوي على عناصر غير رقمية
-    """
-    # التحقق من نوع المدخل
-    if not isinstance(numbers, list):
-        raise TypeError("المدخل يجب أن يكون قائمة")
-    
-    # التحقق من أن القائمة غير فارغة
-    if len(numbers) == 0:
-        print("تحذير: تم تمرير قائمة فارغة، سيتم إرجاع 0")
-        return 0.0
-    
-    # التحقق من أن جميع العناصر أرقام
-    for i, num in enumerate(numbers):
-        if not isinstance(num, numbers.Number):
-            raise ValueError(f"العنصر في الموضع {i} ليس رقمًا: {num}")
-    
-    # حساب المجموع مع معالجة الأخطاء
-    try:
-        total = sum(numbers)
-        
-        # التحقق من تجاوز الحدود العددية
-        if total > float('inf'):
-            raise OverflowError("نتيجة المجموع تتجاوز الحد الأقصى المسموح")
             
-        return total
-        
-    except Exception as e:
-        print(f"حدث خطأ أثناء عملية الجمع: {e}")
-        raise
-
-# مثال للاستخدام
-if __name__ == "__main__":
-    # حالات اختبار مختلفة
-    test_cases = [
-        [1, 2, 3, 4, 5],
-        [10.5, 20.3, 30.2],
-        [],
-        [100, 200, 300]
-    ]
-    
-    for i, test_case in enumerate(test_cases, 1):
-        try:
-            result = sum_array(test_case)
-            print(f"المجموع {i}: {result}")
-        except (TypeError, ValueError, OverflowError) as e:
-            print(f"خطأ في الحالة {i}: {e}")`
-            },
-            html: {
-                complex: `<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>حاسبة المجموع المتقدمة</title>
-    <style>
-        :root {
-            --primary: #6c63ff;
-            --secondary: #ff6584;
-            --dark: #2a2a4a;
-            --light: #f5f5f7;
-            --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        body {
-            background-color: var(--dark);
-            color: var(--light);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-        
-        .calculator {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 30px;
-            width: 100%;
-            max-width: 500px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        h1 {
-            text-align: center;
-            margin-bottom: 30px;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
-        .input-group {
-            margin-bottom: 20px;
-        }
-        
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-        }
-        
-        input, textarea {
-            width: 100%;
-            padding: 12px;
-            background: rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            color: var(--light);
-            font-size: 16px;
-            transition: border 0.3s;
-        }
-        
-        input:focus, textarea:focus {
-            outline: none;
-            border-color: var(--primary);
-        }
-        
-        button {
-            background: var(--gradient);
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: transform 0.3s;
-            width: 100%;
-        }
-        
-        button:hover {
-            transform: translateY(-2px);
-        }
-        
-        .result {
-            margin-top: 20px;
-            padding: 15px;
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 8px;
-            text-align: center;
-            font-size: 18px;
-            font-weight: 600;
-            display: none;
-        }
-        
-        .error {
-            background: rgba(255, 101, 132, 0.2);
-            border-left: 4px solid var(--secondary);
-        }
-        
-        .success {
-            background: rgba(108, 99, 255, 0.2);
-            border-left: 4px solid var(--primary);
-        }
-    </style>
-</head>
-<body>
-    <div class="calculator">
-        <h1>حاسبة المجموع المتقدمة</h1>
-        
-        <div class="input-group">
-            <label for="numbersInput">أدخل الأرقام (مفصولة بفواصل):</label>
-            <input type="text" id="numbersInput" placeholder="مثال: 1, 2, 3, 4, 5">
-        </div>
-        
-        <button onclick="calculateSum()">حساب المجموع</button>
-        
-        <div id="result" class="result"></div>
-    </div>
-
-    <script>
-        function calculateSum() {
-            const input = document.getElementById('numbersInput').value;
-            const resultDiv = document.getElementById('result');
+            ai: "الذكاء الاصطناعي (AI) هو مجال من علوم الكمبيوتر يهتم بإنشاء آلات قادرة على أداء المهام التي تتطلب ذكاءً بشرياً. يشمل التعلم الآلي، المعالجة اللغوية الطبيعية، الرؤية الحاسوبية وغيرها.\n\nأنواع الذكاء الاصطناعي:\n1. الذكاء الاصطناعي الضيق: متخصص في مهام محددة\n2. الذكاء الاصطناعي العام: قادر على أداء أي مهمة فكرية\n3. الذكاء الاصطناعي الفائق: يفوق الذكاء البشري في جميع المجالات",
             
-            // مسح النتيجة السابقة
-            resultDiv.style.display = 'none';
-            resultDiv.className = 'result';
+            learning: "أفضل طريقة لتعلم البرمجة:\n\n1. ابدأ بلغة بسيطة مثل Python\n2. تعلم الأساسيات: المتغيرات، الشروط، الحلقات، الدوال\n3. مارس يومياً وابني مشاريع صغيرة\n4. اقرأ كود الآخرين وتعلم منهم\n5. لا تخف من ارتكاب الأخطاء، فهي جزء من التعلم\n6. انضم لمجتمعات البرمجة لتبادل المعرفة",
             
-            try {
-                // التحقق من أن المدخل غير فارغ
-                if (!input.trim()) {
-                    throw new Error('يرجى إدخال الأرقام');
-                }
-                
-                // تحويل المدخل إلى مصفوفة أرقام
-                const numbers = input.split(',')
-                    .map(num => num.trim())
-                    .filter(num => num !== '')
-                    .map(num => {
-                        const parsed = parseFloat(num);
-                        if (isNaN(parsed)) {
-                            throw new Error(\`"\${num}" ليس رقمًا صالحًا\`);
-                        }
-                        return parsed;
-                    });
-                
-                // التحقق من أن المصفوفة غير فارغة
-                if (numbers.length === 0) {
-                    throw new Error('لم يتم إدخال أي أرقام صالحة');
-                }
-                
-                // حساب المجموع
-                const sum = numbers.reduce((total, num) => total + num, 0);
-                
-                // عرض النتيجة
-                resultDiv.textContent = \`المجموع: \${sum}\`;
-                resultDiv.classList.add('success');
-                resultDiv.style.display = 'block';
-                
-            } catch (error) {
-                // عرض الخطأ
-                resultDiv.textContent = \`خطأ: \${error.message}\`;
-                resultDiv.classList.add('error');
-                resultDiv.style.display = 'block';
-            }
-        }
-        
-        // دعم الضغط على Enter
-        document.getElementById('numbersInput').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                calculateSum();
-            }
-        });
-    </script>
-</body>
-</html>`
-            }
+            default: "هذا سؤال مثير للاهتمام! دعني أفكر في أفضل طريقة للإجابة عليه...\n\nبشكل عام، أنا Zidan AI مصمم لمساعدتك في مجموعة واسعة من المواضيع بما في ذلك البرمجة، الذكاء الاصطناعي، الرياضيات، العلوم، وغيرها الكثير. هل يمكنك توضيح سؤالك أكثر أو طرح سؤال محدد؟"
         };
         
-        // توليد كود متقدم بناءً على المدخلات
-        function generateAdvancedCode(description, language, complexity, style, framework, options) {
-            let code = '';
+        // محاكاة استجابة الذكاء الاصطناعي
+        function simulateAIResponse(userMessage) {
+            // إظهار مؤشر التفكير
+            thinkingIndicator.style.display = 'flex';
             
-            // تحديد القالب المناسب
-            if (codeTemplates[language] && codeTemplates[language][complexity]) {
-                code = codeTemplates[language][complexity];
+            return new Promise((resolve) => {
+                // محاكاة وقت معالجة (بين 1-3 ثواني)
+                const thinkingTime = 1000 + Math.random() * 2000;
+                
+                setTimeout(() => {
+                    // إخفاء مؤشر التفكير
+                    thinkingIndicator.style.display = 'none';
+                    
+                    let response = "";
+                    
+                    // تحليل الرسالة وتوليد رد مناسب
+                    const message = userMessage.toLowerCase();
+                    
+                    if (message.includes("مرحبا") || message.includes("اهلا") || message.includes("اهلاً")) {
+                        const greetings = aiKnowledgeBase.greetings;
+                        response = greetings[Math.floor(Math.random() * greetings.length)];
+                    }
+                    else if (message.includes("جافا") || message.includes("javascript")) {
+                        response = aiKnowledgeBase.programming.javascript;
+                    }
+                    else if (message.includes("بايثون") || message.includes("python")) {
+                        response = aiKnowledgeBase.programming.python;
+                    }
+                    else if (message.includes("html") || message.includes("css")) {
+                        response = aiKnowledgeBase.programming.html;
+                    }
+                    else if (message.includes("ذكاء اصطناعي") || message.includes("ai") || message.includes("artificial intelligence")) {
+                        response = aiKnowledgeBase.ai;
+                    }
+                    else if (message.includes("تعلم") || message.includes("برمجة") || message.includes("مبتدئ")) {
+                        response = aiKnowledgeBase.learning;
+                    }
+                    else if (message.includes("كود") || message.includes("برنامج") || message.includes("دالة")) {
+                        response = "أحتاج إلى مزيد من التفاصيل لمساعدتك في كتابة الكود. هل يمكنك:\n\n1. تحديد لغة البرمجة التي تريد استخدامها\n2. وصف الوظيفة المطلوبة بالتفصيل\n3. ذكر أي متطلبات أو شروط خاصة\n\nمثال: 'أريد دالة في Python تقبل مصفوفة أرقام وتعيد مجموعها مع التحقق من صحة المدخلات'";
+                    }
+                    else {
+                        response = aiKnowledgeBase.default;
+                    }
+                    
+                    resolve(response);
+                }, thinkingTime);
+            });
+        }
+        
+        // إضافة رسالة إلى الدردشة
+        function addMessage(content, isUser = false) {
+            // إخفاء الشاشة الفارغة إذا كانت موجودة
+            if (emptyChat.style.display !== 'none') {
+                emptyChat.style.display = 'none';
+            }
+            
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${isUser ? 'user-message' : 'ai-message'}`;
+            
+            const messageContent = document.createElement('div');
+            messageContent.className = 'message-content';
+            
+            // إذا كان الرد يحتوي على كود، نقوم بصياغته بشكل خاص
+            if (!isUser && content.includes('```')) {
+                const parts = content.split('```');
+                let formattedContent = '';
+                
+                for (let i = 0; i < parts.length; i++) {
+                    if (i % 2 === 0) {
+                        // نص عادي
+                        formattedContent += parts[i];
+                    } else {
+                        // كود
+                        formattedContent += `<div class="code-block">${parts[i]}</div>`;
+                    }
+                }
+                
+                messageContent.innerHTML = formattedContent;
             } else {
-                // كود افتراضي إذا لم يكن هناك قالب محدد
-                code = `// ${description}\n// الكود المتقدم بلغة ${language} بمستوى تعقيد ${complexity}\n// النمط: ${style}, الإطار: ${framework}\n\n`;
-                
-                // إضافة ميزات حسب الخيارات
-                if (options.optimize) code += "// ⚡ محسن للأداء\n";
-                if (options.comments) code += "// 💬 يحتوي على تعليقات توضيحية\n";
-                if (options.errorHandling) code += "// 🛡️ يحتوي على معالجة متقدمة للأخطاء\n";
-                if (options.tests) code += "// ✅ يحتوي على اختبارات تلقائية\n";
-                
-                code += `\n// سيتم إنشاء الكود المتقدم هنا...`;
+                messageContent.textContent = content;
             }
             
-            return code;
+            const messageTime = document.createElement('div');
+            messageTime.className = 'message-time';
+            messageTime.textContent = new Date().toLocaleTimeString('ar-EG', { 
+                hour: '2-digit', 
+                minute: '2-digit' 
+            });
+            
+            messageDiv.appendChild(messageContent);
+            messageDiv.appendChild(messageTime);
+            
+            chatMessages.appendChild(messageDiv);
+            
+            // التمرير إلى الأسفل لرؤية أحدث رسالة
+            chatMessages.scrollTop = chatMessages.scrollHeight;
         }
         
-        // تحديث واجهة المستخدم بناءً على اللغة المختارة
-        function updateUIForLanguage() {
-            const lang = languageSelect.value;
-            currentLang.textContent = lang.charAt(0).toUpperCase() + lang.slice(1);
+        // إرسال رسالة
+        function sendMessage() {
+            const message = chatInput.value.trim();
             
-            // تحديث الأيقونة حسب اللغة
-            const langIcons = {
-                javascript: 'fab fa-js-square',
-                python: 'fab fa-python',
-                html: 'fab fa-html5',
-                react: 'fab fa-react',
-                node: 'fab fa-node-js',
-                php: 'fab fa-php',
-                java: 'fab fa-java',
-                cpp: 'fas fa-code'
-            };
+            if (message === '') return;
             
-            const iconElement = document.querySelector('.code-lang i');
-            iconElement.className = langIcons[lang] || 'fas fa-code';
+            // إضافة رسالة المستخدم
+            addMessage(message, true);
+            
+            // مسح حقل الإدخال
+            chatInput.value = '';
+            
+            // إعادة ضبط ارتفاع حقل الإدخال
+            chatInput.style.height = 'auto';
+            
+            // محاكاة استجابة الذكاء الاصطناعي
+            simulateAIResponse(message).then(response => {
+                // عرض الرد مع تأثير الكتابة
+                typeResponse(response);
+            });
+        }
+        
+        // محاكاة الكتابة التدريجية للرد
+        function typeResponse(response) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'message ai-message';
+            
+            const messageContent = document.createElement('div');
+            messageContent.className = 'message-content';
+            
+            const messageTime = document.createElement('div');
+            messageTime.className = 'message-time';
+            messageTime.textContent = new Date().toLocaleTimeString('ar-EG', { 
+                hour: '2-digit', 
+                minute: '2-digit' 
+            });
+            
+            messageDiv.appendChild(messageContent);
+            messageDiv.appendChild(messageTime);
+            
+            chatMessages.appendChild(messageDiv);
+            
+            let index = 0;
+            const typingSpeed = 20; // ملي ثانية بين كل حرف
+            
+            function typeCharacter() {
+                if (index < response.length) {
+                    // إذا كان هناك كود في الرد، نتعامل معه بشكل خاص
+                    if (response.substring(index).startsWith('```')) {
+                        const codeEnd = response.indexOf('```', index + 3);
+                        if (codeEnd !== -1) {
+                            const codeBlock = response.substring(index, codeEnd + 3);
+                            messageContent.innerHTML += `<div class="code-block">${codeBlock.substring(3, codeBlock.length - 3)}</div>`;
+                            index = codeEnd + 3;
+                            setTimeout(typeCharacter, typingSpeed * 5);
+                            return;
+                        }
+                    }
+                    
+                    messageContent.textContent += response.charAt(index);
+                    index++;
+                    setTimeout(typeCharacter, typingSpeed);
+                    
+                    // التمرير إلى الأسفل مع كل حرف جديد
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
+                }
+            }
+            
+            typeCharacter();
+        }
+        
+        // بدء محادثة جديدة
+        function startNewChat() {
+            chatMessages.innerHTML = '';
+            emptyChat.style.display = 'flex';
+            chatInput.focus();
         }
         
         // أحداث
-        generateBtn.addEventListener('click', function() {
-            const description = codeDescription.value;
-            const language = languageSelect.value;
-            const complexity = complexitySelect.value;
-            const style = styleSelect.value;
-            const framework = frameworkSelect.value;
-            
-            const options = {
-                optimize: document.getElementById('optimize').checked,
-                comments: document.getElementById('comments').checked,
-                errorHandling: document.getElementById('errorHandling').checked,
-                tests: document.getElementById('tests').checked
-            };
-            
-            // عرض مؤشر التحميل
-            loading.style.display = 'flex';
-            codeContent.textContent = 'جاري إنشاء الكود المتقدم...';
-            
-            // محاكاة عملية التوليد (في التطبيق الحقيقي، سيتم استدعاء API للذكاء الاصطناعي)
-            setTimeout(() => {
-                // إخفاء مؤشر التحميل
-                loading.style.display = 'none';
-                
-                // توليد كود بناءً على المدخلات
-                const generatedCode = generateAdvancedCode(description, language, complexity, style, framework, options);
-                codeContent.textContent = generatedCode;
-                
-                // تحديث حجم الكود
-                codeSize.textContent = generatedCode.length.toLocaleString();
-            }, 2500);
-        });
+        sendBtn.addEventListener('click', sendMessage);
         
-        copyBtn.addEventListener('click', function() {
-            const codeToCopy = codeContent.textContent;
-            
-            // استخدام Clipboard API إذا كان متاحًا
-            if (navigator.clipboard) {
-                navigator.clipboard.writeText(codeToCopy).then(() => {
-                    showNotification('تم نسخ الكود بنجاح!', 'success');
-                }).catch(err => {
-                    console.error('فشل النسخ: ', err);
-                    showNotification('فشل نسخ الكود', 'error');
-                });
-            } else {
-                // الطريقة القديمة للنسخ
-                const textArea = document.createElement('textarea');
-                textArea.value = codeToCopy;
-                document.body.appendChild(textArea);
-                textArea.select();
-                document.execCommand('copy');
-                document.body.removeChild(textArea);
-                showNotification('تم نسخ الكود بنجاح!', 'success');
+        chatInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendMessage();
             }
         });
         
-        downloadBtn.addEventListener('click', function() {
-            const codeToDownload = codeContent.textContent;
-            const language = languageSelect.value;
-            const extension = getFileExtension(language);
-            const filename = `zidan-coed-code.${extension}`;
-            
-            const blob = new Blob([codeToDownload], { type: 'text/plain' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = filename;
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url);
-            
-            showNotification('تم تحميل الملف بنجاح!', 'success');
+        newChatBtn.addEventListener('click', startNewChat);
+        
+        // السماح لحقل الإدخال بالتوسع مع المحتوى
+        chatInput.addEventListener('input', function() {
+            this.style.height = 'auto';
+            this.style.height = (this.scrollHeight) + 'px';
         });
         
-        formatBtn.addEventListener('click', function() {
-            // محاكاة تنسيق الكود (في التطبيق الحقيقي، سيتم استخدام مكتبة تنسيق)
-            showNotification('جاري تنسيق الكود...', 'info');
+        // إضافة أحداث للاقتراحات
+        document.querySelectorAll('.suggestion').forEach(suggestion => {
+            suggestion.addEventListener('click', function() {
+                const prompt = this.getAttribute('data-prompt');
+                chatInput.value = prompt;
+                chatInput.focus();
+            });
+        });
+        
+        // رسالة ترحيب تلقائية عند التحميل
+        window.addEventListener('load', () => {
             setTimeout(() => {
-                showNotification('تم تنسيق الكود بنجاح!', 'success');
+                if (emptyChat.style.display !== 'none') {
+                    const welcomeMessage = "مرحباً! أنا Zidan AI، مساعدك الذكي. يمكنني مساعدتك في:\n\n• البرمجة وتطوير الويب\n• الذكاء الاصطناعي والتعلم الآلي\n• حل المشكلات الرياضية\n• الإجابة على الأسئلة العامة\n\nلا تتردد في سؤالي عن أي شيء!";
+                    typeResponse(welcomeMessage);
+                    emptyChat.style.display = 'none';
+                }
             }, 1000);
         });
         
-        languageSelect.addEventListener('change', updateUIForLanguage);
-        
-        // وظائف مساعدة
-        function getFileExtension(lang) {
-            const extensions = {
-                javascript: 'js',
-                python: 'py',
-                html: 'html',
-                react: 'jsx',
-                node: 'js',
-                php: 'php',
-                java: 'java',
-                cpp: 'cpp'
-            };
-            return extensions[lang] || 'txt';
-        }
-        
-        function showNotification(message, type) {
-            // إنشاء عنصر الإشعار
-            const notification = document.createElement('div');
-            notification.textContent = message;
-            notification.style.cssText = `
-                position: fixed;
-                top: 20px;
-                right: 20px;
-                padding: 15px 20px;
-                border-radius: 8px;
-                color: white;
-                font-weight: 500;
-                z-index: 1000;
-                transition: all 0.3s;
-                transform: translateX(100%);
-            `;
-            
-            // تخصيص الألوان حسب النوع
-            if (type === 'success') {
-                notification.style.background = 'var(--primary)';
-            } else if (type === 'error') {
-                notification.style.background = 'var(--secondary)';
-            } else {
-                notification.style.background = 'var(--accent)';
-            }
-            
-            document.body.appendChild(notification);
-            
-            // إظهار الإشعار
-            setTimeout(() => {
-                notification.style.transform = 'translateX(0)';
-            }, 100);
-            
-            // إخفاء الإشعار بعد 3 ثوان
-            setTimeout(() => {
-                notification.style.transform = 'translateX(100%)';
-                setTimeout(() => {
-                    document.body.removeChild(notification);
-                }, 300);
-            }, 3000);
-        }
-        
-        // تهيئة الواجهة
-        updateUIForLanguage();
-        
-        // إضافة أمثلة للوصف
-        const examples = [
-            "أنشئ دالة في JavaScript تقبل مصفوفة من الأرقام وتعيد مجموعها مع التحقق من صحة المدخلات ومعالجة الأخطاء",
-            "صمم نموذج تسجيل دخول متكامل بلغة Python مع تشفير كلمات المرور والتحقق من صحة البيانات",
-            "أنشئ تطبيق ويب تفاعلي باستخدام React لإدارة المهام اليومية مع إمكانية الإضافة والحذف والتعديل"
-        ];
-        
-        let exampleIndex = 0;
-        setInterval(() => {
-            codeDescription.placeholder = examples[exampleIndex];
-            exampleIndex = (exampleIndex + 1) % examples.length;
-        }, 4000);
+        // التركيز على حقل الإدخال عند النقر في أي مكان
+        document.addEventListener('click', () => {
+            chatInput.focus();
+        });
     </script>
 </body>
 </html>
